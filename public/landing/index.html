@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+            content="DaloWeb — Agencia digital. Creamos webs profesionales, apps móviles, sistemas de reservas y software a medida para hacer crecer tu negocio.">
+        <title>DaloWeb — Webs, Apps y Software a Medida</title>
+        <link rel="icon" type="image/svg+xml" href="../../public/src/img/favicon/favicon.svg">
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="js/main.js" defer></script>
+    </head>
+
+    <body>
+
+        <!-- ========== HEADER ========== -->
+        <header class="header" id="header">
+            <div class="container header__inner">
+                <a href="#inicio" class="logo" aria-label="DaloWeb inicio">Dalo<span>Web</span></a>
+
+                <nav class="nav" id="nav" aria-label="Navegación principal">
+                    <ul class="nav__list">
+                        <li><a href="#inicio" class="nav__link">Inicio</a></li>
+                        <li><a href="#servicios" class="nav__link">Servicios</a></li>
+                        <li><a href="#proyectos" class="nav__link">Proyectos</a></li>
+                        <li><a href="#tecnologias" class="nav__link">Tecnologías</a></li>
+                        <li><a href="#nosotros" class="nav__link">Sobre nosotros</a></li>
+                        <li><a href="#precios" class="nav__link">Precios</a></li>
+                        <li><a href="#contacto" class="nav__link">Contacto</a></li>
+                    </ul>
+                </nav>
+
+                <a href="#contacto" class="btn btn--primary header__cta">Pide tu presupuesto</a>
+
+                <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <!-- ========== HERO ========== -->
+            <section class="hero" id="inicio">
+                <div class="container hero__inner">
+                    <div class="hero__content">
+                        <h1 class="hero__title">Creamos <span class="typewriter" id="typewriter"></span> que hacen
+                            <em>crecer tu negocio</em>
+                        </h1>
+                        <p class="hero__subtitle">Diseño web profesional, apps móviles para iOS y Android, sistemas de
+                            reservas online y software a medida — todo lo que necesitas para digitalizarte.</p>
+                        <div class="hero__buttons">
+                            <a href="#contacto" class="btn btn--primary btn--lg">Quiero mi web</a>
+                            <a href="#proyectos" class="btn btn--outline btn--lg">Ver proyectos</a>
+                        </div>
+                    </div>
+
+                    <div class="hero__visual">
+                        <!-- Mockup simulado: Web -->
+                        <div class="mockup mockup--web">
+                            <div class="mockup__bar">
+                                <span class="dot dot--red"></span>
+                                <span class="dot dot--yellow"></span>
+                                <span class="dot dot--green"></span>
+                            </div>
+                            <div class="mockup__body">
+                                <div class="mockup__nav-placeholder"></div>
+                                <div class="mockup__hero-placeholder"></div>
+                                <div class="mockup__cards-placeholder">
+                                    <div class="mockup__card-sm"></div>
+                                    <div class="mockup__card-sm"></div>
+                                    <div class="mockup__card-sm"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mockup simulado: App -->
+                        <div class="mockup mockup--app">
+                            <div class="mockup__notch"></div>
+                            <div class="mockup__app-body">
+                                <div class="mockup__app-header"></div>
+                                <div class="mockup__app-list">
+                                    <div class="mockup__app-item"></div>
+                                    <div class="mockup__app-item"></div>
+                                    <div class="mockup__app-item"></div>
+                                </div>
+                                <div class="mockup__app-fab">+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="wave-separator">
+                <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0,60 C320,0 720,0 1080,30 C1280,48 1400,55 1440,60 L1440,60 L0,60Z" fill="currentColor" />
+                </svg>
+            </div>
+
+            <!-- ========== SERVICIOS ========== -->
+            <section class="section services" id="servicios">
+                <div class="container">
+                    <h2 class="section__title">Nuestros servicios</h2>
+                    <p class="section__subtitle">Soluciones digitales completas para impulsar tu negocio al siguiente
+                        nivel.</p>
+
+                    <div class="services__grid">
+                        <!-- Servicio 1 -->
+                        <article class="card">
+                            <div class="card__icon">
+                                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" />
+                                    <path d="M8 21h8" />
+                                    <path d="M12 17v4" />
+                                </svg>
+                            </div>
+                            <h3 class="card__title">Páginas web profesionales</h3>
+                            <p class="card__text">Diseñamos y desarrollamos sitios web rápidos, modernos y optimizados
+                                para SEO que convierten visitantes en clientes.</p>
+                        </article>
+                        <!-- Servicio 2 -->
+                        <article class="card">
+                            <div class="card__icon">
+                                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="3" />
+                                    <path d="M12 18h.01" />
+                                </svg>
+                            </div>
+                            <h3 class="card__title">Aplicaciones móviles</h3>
+                            <p class="card__text">Apps nativas e híbridas para iOS y Android con interfaces intuitivas y
+                                rendimiento excepcional.</p>
+                        </article>
+                        <!-- Servicio 3 -->
+                        <article class="card">
+                            <div class="card__icon">
+                                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" />
+                                    <path d="M16 2v4" />
+                                    <path d="M8 2v4" />
+                                    <path d="M3 10h18" />
+                                    <path d="M8 14h.01" />
+                                    <path d="M12 14h.01" />
+                                    <path d="M16 14h.01" />
+                                    <path d="M8 18h.01" />
+                                    <path d="M12 18h.01" />
+                                </svg>
+                            </div>
+                            <h3 class="card__title">Sistemas de reservas online</h3>
+                            <p class="card__text">Plataformas de reservas integradas con tu web y tus herramientas, para
+                                automatizar citas y aumentar ventas.</p>
+                        </article>
+                        <!-- Servicio 4 -->
+                        <article class="card">
+                            <div class="card__icon">
+                                <svg viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                                    <path d="M2 17l10 5 10-5" />
+                                    <path d="M2 12l10 5 10-5" />
+                                </svg>
+                            </div>
+                            <h3 class="card__title">Aplicaciones a medida</h3>
+                            <p class="card__text">Paneles internos, pequeños ERP, integraciones con APIs y herramientas
+                                personalizadas para tu operativa diaria.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== CÓMO TRABAJAMOS ========== -->
+            <section class="section process" id="proceso">
+                <div class="container">
+                    <h2 class="section__title">Tu web lista en días, no en meses</h2>
+                    <p class="section__subtitle">Mientras otras agencias tardan semanas en empezar, nosotros estudiamos
+                        tu negocio antes de que nos contactes.</p>
+
+                    <div class="process__timeline">
+                        <article class="process__step">
+                            <div class="process__number">01</div>
+                            <h3 class="process__title">Estudiamos tu negocio</h3>
+                            <p class="process__text">Antes de la primera reunión ya hemos analizado tu sector, tu
+                                competencia y tus necesidades. Llegamos con los deberes hechos.</p>
+                        </article>
+                        <article class="process__step">
+                            <div class="process__number">02</div>
+                            <h3 class="process__title">Diseño funcional listo</h3>
+                            <p class="process__text">Te presentamos un diseño funcional basado en nuestro análisis. No
+                                es un boceto: es una web navegable que ya puedes probar.</p>
+                        </article>
+                        <article class="process__step">
+                            <div class="process__number">03</div>
+                            <h3 class="process__title">Personalizamos juntos</h3>
+                            <p class="process__text">Ajustamos colores, textos, imágenes y los pequeños detalles que
+                                hacen única tu marca. Tú decides, nosotros ejecutamos.</p>
+                        </article>
+                        <article class="process__step">
+                            <div class="process__number">04</div>
+                            <h3 class="process__title">Online y operativa</h3>
+                            <p class="process__text">Publicamos tu web con dominio, hosting y SSL configurados. En
+                                varios días tienes tu negocio visible en internet.</p>
+                        </article>
+                    </div>
+
+                    <div class="process__highlight">
+                        <span class="process__highlight-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                            </svg>
+                        </span>
+                        <p><strong>De media, entregamos una web profesional en 3 días.</strong> Otras agencias necesitan
+                            entre 4 y 8 semanas para lo mismo.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== ESTADÍSTICAS ========== -->
+            <section class="section stats" id="stats">
+                <div class="container">
+                    <div class="stats__grid">
+                        <div class="stat">
+                            <span class="stat__number" data-target="50">0</span>
+                            <span class="stat__label">Proyectos entregados</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number" data-target="4.8" data-decimal="true">0</span>
+                            <span class="stat__label">Valoración de nuestros clientes</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat__number" data-target="15">0</span>
+                            <span class="stat__suffix">años</span>
+                            <span class="stat__label">De experiencia en el sector</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== PROYECTOS ========== -->
+            <section class="section projects" id="proyectos">
+                <div class="container">
+                    <h2 class="section__title">Proyectos destacados</h2>
+                    <p class="section__subtitle">Algunos casos de éxito que hablan por nosotros.</p>
+
+                    <div class="projects__grid">
+                        <article class="project-card">
+                            <a href="https://aroundsevillatours.es" target="_blank" rel="noopener noreferrer"
+                                class="project-card__preview project-card__preview--web">
+                                <div class="preview-frame preview-frame--browser">
+                                    <div class="preview-frame__bar"><span></span><span></span><span></span></div>
+                                    <div class="preview-frame__img">
+                                        <img src="img/projects/around-sevilla.png" alt="Captura de Around Sevilla Tours"
+                                            loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-card__info">
+                                <div class="project-card__badge">Web</div>
+                                <h3 class="project-card__title">Around Sevilla Tours</h3>
+                                <p class="project-card__desc">Agencia de visitas turísticas en Sevilla.</p>
+                                <p class="project-card__result">+45 % de reservas online en 3 meses</p>
+                                <a href="https://aroundsevillatours.es" target="_blank" rel="noopener noreferrer"
+                                    class="project-card__link">Visitar web &rarr;</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="project-card__preview project-card__preview--app">
+                                <div class="preview-frame preview-frame--phone">
+                                    <div class="preview-frame__notch"></div>
+                                    <div class="preview-frame__img">
+                                        <img src="img/projects/fuerza-neta.png" alt="Captura de Fuerza Neta App"
+                                            loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-card__info">
+                                <div class="project-card__badge">App móvil</div>
+                                <h3 class="project-card__title">Fuerza Neta</h3>
+                                <p class="project-card__desc">App de Fuerza para que los Entrenadores puedan planificar
+                                    entrenamientos a sus atletas.</p>
+                                <p class="project-card__result">+500 atletas activos</p>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver app
+                                    &rarr;</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="project-card__preview project-card__preview--web">
+                                <div class="preview-frame preview-frame--browser">
+                                    <div class="preview-frame__bar"><span></span><span></span><span></span></div>
+                                    <div class="preview-frame__img">
+                                        <img src="img/projects/neto-comercial.png" alt="Captura de Neto Comercial"
+                                            loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-card__info">
+                                <div class="project-card__badge">Aplicación a Medida</div>
+                                <h3 class="project-card__title">Neto Comercial</h3>
+                                <p class="project-card__desc">Sistema de gestión de clientes, ventas y facturas para
+                                    llevar el control de la empresa.</p>
+                                <p class="project-card__result">+Control de las facturas pendientes o impagos</p>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card__link">Visitar
+                                    web &rarr;</a>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="project-card__preview project-card__preview--app">
+                                <div class="preview-frame preview-frame--phone">
+                                    <div class="preview-frame__notch"></div>
+                                    <div class="preview-frame__img">
+                                        <img src="img/projects/budgetix.png" alt="Captura de Budgetix App"
+                                            loading="lazy">
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="project-card__info">
+                                <div class="project-card__badge">App móvil</div>
+                                <h3 class="project-card__title">Budgetix</h3>
+                                <p class="project-card__desc">Aplicación móvil para gestión de finanzas personales con
+                                    la cual conseguir controlar y optimizar tus ahorros.</p>
+                                <p class="project-card__result">Mejoras mensuales en la aplicación.</p>
+                                <a href="#" target="_blank" rel="noopener noreferrer" class="project-card__link">Ver app
+                                    &rarr;</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== TECNOLOGÍAS ========== -->
+            <section class="section technologies" id="tecnologias">
+                <div class="container">
+                    <h2 class="section__title">Tecnologías que usamos</h2>
+                    <p class="section__subtitle">Herramientas modernas y probadas para cada proyecto.</p>
+
+                    <div class="marquee">
+                        <div class="marquee__track">
+                            <span class="chip">HTML5</span>
+                            <span class="chip">CSS3</span>
+                            <span class="chip">JavaScript</span>
+                            <span class="chip">TypeScript</span>
+                            <span class="chip">React</span>
+                            <span class="chip">Vue.js</span>
+                            <span class="chip">Node.js</span>
+                            <span class="chip">PHP</span>
+                            <span class="chip">Laravel</span>
+                            <span class="chip">HTML5</span>
+                            <span class="chip">CSS3</span>
+                            <span class="chip">JavaScript</span>
+                            <span class="chip">TypeScript</span>
+                            <span class="chip">React</span>
+                            <span class="chip">Vue.js</span>
+                            <span class="chip">Node.js</span>
+                            <span class="chip">PHP</span>
+                            <span class="chip">Laravel</span>
+                        </div>
+                    </div>
+                    <div class="marquee marquee--reverse">
+                        <div class="marquee__track">
+                            <span class="chip">Python</span>
+                            <span class="chip">SQL</span>
+                            <span class="chip">MongoDB</span>
+                            <span class="chip">REST APIs</span>
+                            <span class="chip">Flutter</span>
+                            <span class="chip">React Native</span>
+                            <span class="chip">Docker</span>
+                            <span class="chip">Git</span>
+                            <span class="chip">Figma</span>
+                            <span class="chip">Python</span>
+                            <span class="chip">SQL</span>
+                            <span class="chip">MongoDB</span>
+                            <span class="chip">REST APIs</span>
+                            <span class="chip">Flutter</span>
+                            <span class="chip">React Native</span>
+                            <span class="chip">Docker</span>
+                            <span class="chip">Git</span>
+                            <span class="chip">Figma</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== POR QUÉ DALOWEB ========== -->
+            <section class="section why-us" id="nosotros">
+                <div class="container">
+                    <h2 class="section__title">¿Por qué DaloWeb?</h2>
+                    <p class="section__subtitle">Lo que nos diferencia de otras agencias.</p>
+
+                    <div class="why-us__grid">
+                        <article class="why-card">
+                            <div class="why-card__icon">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M12 20V10" />
+                                    <path d="M18 20V4" />
+                                    <path d="M6 20v-4" />
+                                </svg>
+                            </div>
+                            <h3 class="why-card__title">Diseño orientado a conversión</h3>
+                            <p class="why-card__text">Cada decisión de diseño busca generar resultados medibles para tu
+                                negocio.</p>
+                        </article>
+                        <article class="why-card">
+                            <div class="why-card__icon">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                </svg>
+                            </div>
+                            <h3 class="why-card__title">Rendimiento y seguridad</h3>
+                            <p class="why-card__text">Webs ultrarrápidas con buenas prácticas de seguridad desde el
+                                primer día.</p>
+                        </article>
+                        <article class="why-card">
+                            <div class="why-card__icon">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
+                                    <circle cx="9" cy="7" r="4" />
+                                    <path d="M23 21v-2a4 4 0 00-3-3.87" />
+                                    <path d="M16 3.13a4 4 0 010 7.75" />
+                                </svg>
+                            </div>
+                            <h3 class="why-card__title">Soporte cercano y transparente</h3>
+                            <p class="why-card__text">Comunicación directa, sin intermediarios. Sabrás en todo momento
+                                el estado de tu proyecto.</p>
+                        </article>
+                        <article class="why-card">
+                            <div class="why-card__icon">
+                                <svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor"
+                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94L6.7 20.2a2.12 2.12 0 01-3-3l6.83-6.83a6 6 0 017.94-7.94l-3.76 3.77z" />
+                                </svg>
+                            </div>
+                            <h3 class="why-card__title">Soluciones a medida</h3>
+                            <p class="why-card__text">No usamos plantillas genéricas. Cada proyecto se construye desde
+                                cero según tus necesidades.</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== PRECIOS ========== -->
+            <section class="section pricing" id="precios">
+                <div class="container">
+                    <h2 class="section__title">Nuestros precios</h2>
+                    <p class="section__subtitle">Planes transparentes adaptados a cada tipo de proyecto. Sin letra
+                        pequeña.</p>
+
+                    <div class="pricing__grid">
+                        <!-- Plan Web -->
+                        <article class="price-card">
+                            <div class="price-card__header">
+                                <div class="price-card__icon">
+                                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                                        <path d="M8 21h8" />
+                                        <path d="M12 17v4" />
+                                    </svg>
+                                </div>
+                                <h3 class="price-card__title">Web Profesional</h3>
+                                <div class="price-card__price">Desde <strong>200 €</strong></div>
+                            </div>
+                            <ul class="price-card__features">
+                                <li>Diseño personalizado y responsive</li>
+                                <li>Hasta 5 secciones / páginas</li>
+                                <li>Optimización SEO básica</li>
+                                <li>Formulario de contacto</li>
+                                <li>Certificado SSL incluido</li>
+                                <li>Entrega en una semana</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn--outline btn--full">Solicitar presupuesto</a>
+                        </article>
+
+                        <!-- Plan Reservas -->
+                        <article class="price-card">
+                            <div class="price-card__header">
+                                <div class="price-card__icon">
+                                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" />
+                                        <path d="M16 2v4" />
+                                        <path d="M8 2v4" />
+                                        <path d="M3 10h18" />
+                                    </svg>
+                                </div>
+                                <h3 class="price-card__title">Sistema de Reservas</h3>
+                                <div class="price-card__price">Desde <strong>600 €</strong></div>
+                            </div>
+                            <ul class="price-card__features">
+                                <li>Calendario de reservas online</li>
+                                <li>Confirmación por email automática</li>
+                                <li>Panel de gestión de citas</li>
+                                <li>Integrable en tu web actual</li>
+                                <li>Recordatorios automáticos</li>
+                                <li>Soporte 2 meses incluido</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn--outline btn--full">Solicitar presupuesto</a>
+                        </article>
+
+                        <!-- Plan App -->
+                        <article class="price-card price-card--featured">
+                            <div class="price-card__badge">Más solicitado</div>
+                            <div class="price-card__header">
+                                <div class="price-card__icon">
+                                    <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="5" y="2" width="14" height="20" rx="3" />
+                                        <path d="M12 18h.01" />
+                                    </svg>
+                                </div>
+                                <h3 class="price-card__title">App Móvil</h3>
+                                <div class="price-card__price">Desde <strong>800 €</strong></div>
+                            </div>
+                            <ul class="price-card__features">
+                                <li>iOS y Android (multiplataforma)</li>
+                                <li>Diseño UI/UX personalizado</li>
+                                <li>Panel de administración</li>
+                                <li>Soporte 3 meses incluido</li>
+                            </ul>
+                            <a href="#contacto" class="btn btn--primary btn--full">Solicitar presupuesto</a>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== TESTIMONIOS ========== -->
+            <section class="section testimonials">
+                <div class="container">
+                    <h2 class="section__title">Lo que dicen nuestros clientes</h2>
+
+                    <div class="testimonials__grid">
+                        <blockquote class="testimonial">
+                            <p class="testimonial__text">"Desde que lanzamos la nueva web, nuestras reservas online se
+                                han disparado. El equipo de DaloWeb entendió nuestro negocio desde el minuto uno."</p>
+                            <footer class="testimonial__author">
+                                <div class="testimonial__avatar">AG</div>
+                                <div class="testimonial__author-info">
+                                    <strong>Ana García</strong>
+                                    <span>Directora, Restaurante La Marina</span>
+                                </div>
+                            </footer>
+                        </blockquote>
+                        <blockquote class="testimonial">
+                            <p class="testimonial__text">"Necesitábamos una app que fuera sencilla para nuestros socios
+                                y DaloWeb lo clavó. El soporte post‑lanzamiento es inmejorable."</p>
+                            <footer class="testimonial__author">
+                                <div class="testimonial__avatar">CR</div>
+                                <div class="testimonial__author-info">
+                                    <strong>Carlos Ruiz</strong>
+                                    <span>CEO, FitClub Cádiz</span>
+                                </div>
+                            </footer>
+                        </blockquote>
+                        <blockquote class="testimonial">
+                            <p class="testimonial__text">"El panel a medida que nos desarrollaron nos ahorra horas de
+                                trabajo cada semana. Mejor inversión imposible."</p>
+                            <footer class="testimonial__author">
+                                <div class="testimonial__avatar">LM</div>
+                                <div class="testimonial__author-info">
+                                    <strong>Laura Méndez</strong>
+                                    <span>Operaciones, Logística Sur Express</span>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== CONTACTO ========== -->
+            <section class="section contact" id="contacto">
+                <div class="container">
+                    <h2 class="section__title">Cuéntanos tu proyecto</h2>
+                    <p class="section__subtitle">Rellena el formulario y te responderemos en menos de 24 h.</p>
+
+                    <form class="contact-form" id="contactForm" novalidate>
+                        <div class="contact-form__group">
+                            <label for="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="contact-form__group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                        </div>
+                        <div class="contact-form__group">
+                            <label for="tipo">Tipo de proyecto</label>
+                            <select id="tipo" name="tipo" required>
+                                <option value="" disabled selected>Selecciona una opción</option>
+                                <option value="web">Página web</option>
+                                <option value="app">App móvil</option>
+                                <option value="reservas">Sistema de reservas</option>
+                                <option value="medida">Aplicación a medida</option>
+                            </select>
+                        </div>
+                        <div class="contact-form__group contact-form__group--full">
+                            <label for="mensaje">Mensaje</label>
+                            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos qué necesitas…"
+                                required></textarea>
+                        </div>
+                        <div class="contact-form__group contact-form__group--full">
+                            <button type="submit" class="btn btn--primary btn--lg btn--full">Enviar mensaje</button>
+                        </div>
+                        <div class="contact-form__feedback" id="formFeedback" aria-live="polite"></div>
+                    </form>
+
+                    <div class="contact__info">
+                        <p><strong>Email:</strong> hola@daloweb.com</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- ========== FOOTER ========== -->
+        <footer class="footer">
+            <div class="container footer__inner">
+                <div class="footer__brand">
+                    <a href="#inicio" class="logo logo--footer">Dalo<span>Web</span></a>
+                </div>
+
+                <nav class="footer__links" aria-label="Enlaces del pie">
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#proyectos">Proyectos</a></li>
+                        <li><a href="#nosotros">Sobre nosotros</a></li>
+                        <li><a href="#precios">Precios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#">Aviso legal</a></li>
+                        <li><a href="#">Política de privacidad</a></li>
+                    </ul>
+                </nav>
+
+                <p class="footer__copy">&copy; 2026 DaloWeb. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+
+        <!-- CTA flotante -->
+        <div class="floating-cta" id="floatingCta">
+            <div class="container floating-cta__inner">
+                <p class="floating-cta__text">¿Listo para impulsar tu negocio?</p>
+                <a href="#contacto" class="btn btn--primary btn--sm">Pide tu presupuesto</a>
+            </div>
+        </div>
+
+    </body>
+
+</html>

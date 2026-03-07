@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 165 40" width="165" height="40">
+  <style>
+    .logo-text { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; font-weight: 800; font-size: 36px; letter-spacing: -0.02em; }
+  </style>
+  <text x="0" y="32" class="logo-text">
+    <tspan fill="#e8e8f0">Dalo</tspan><tspan fill="#6c5ce7">Web</tspan>
+  </text>
+</svg>
