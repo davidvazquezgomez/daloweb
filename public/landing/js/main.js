@@ -19,6 +19,13 @@
   /* ==========================================================
      1. Mobile menu toggle
      ========================================================== */
+  function closeMenu() {
+    nav.classList.remove("is-open");
+    hamburger.classList.remove("is-active");
+    hamburger.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
   hamburger.addEventListener("click", function () {
     const isOpen = nav.classList.toggle("is-open");
     hamburger.classList.toggle("is-active");
@@ -26,15 +33,25 @@
     document.body.style.overflow = isOpen ? "hidden" : "";
   });
 
+  // Close mobile menu when clicking the overlay (outside the drawer)
+  nav.addEventListener("click", function (e) {
+    if (e.target === nav) closeMenu();
+  });
+
   // Close mobile menu on link click
   navLinks.forEach(function (link) {
     link.addEventListener("click", function () {
-      nav.classList.remove("is-open");
-      hamburger.classList.remove("is-active");
-      hamburger.setAttribute("aria-expanded", "false");
-      document.body.style.overflow = "";
+      closeMenu();
     });
   });
+
+  // Close mobile menu on mobile CTA click
+  var mobileCta = nav.querySelector(".nav__cta-mobile");
+  if (mobileCta) {
+    mobileCta.addEventListener("click", function () {
+      closeMenu();
+    });
+  }
 
   /* ==========================================================
      2. Shrink header on scroll

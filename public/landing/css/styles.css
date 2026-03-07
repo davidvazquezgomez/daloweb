@@ -261,10 +261,19 @@ button {
     transform: translateY(-7px) rotate(-45deg);
 }
 
+/* Drawer wrapper — hidden on desktop */
+.nav__drawer {
+    display: contents;
+}
+
+/* Mobile CTA inside nav — hidden on desktop */
+.nav__cta-mobile {
+    display: none;
+}
+
 /* Mobile nav */
 @media (max-width: 899px) {
 
-    .nav,
     .header__cta {
         display: none;
     }
@@ -273,25 +282,81 @@ button {
         display: flex;
     }
 
+    /*
+     * Overlay — uses 100vw/100vh instead of inset:0 because
+     * the header's backdrop-filter creates a containing block
+     * that would constrain inset:0 to the header height.
+     */
+    .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(15, 15, 26, .6);
+        -webkit-backdrop-filter: blur(4px);
+        backdrop-filter: blur(4px);
+        z-index: 1005;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity .3s ease, visibility .3s ease;
+    }
+
     .nav.is-open {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Side drawer panel */
+    .nav__drawer {
         display: flex;
         flex-direction: column;
-        position: fixed;
-        inset: 0;
-        background: var(--color-bg);
-        align-items: center;
-        justify-content: center;
-        z-index: 1005;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 280px;
+        max-width: 80vw;
+        height: 100%;
+        background: var(--color-surface);
+        padding: calc(var(--header-h) + 2rem) 2rem 2rem;
+        overflow-y: auto;
+        transform: translateX(100%);
+        transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+        box-shadow: -4px 0 24px rgba(0, 0, 0, .4);
     }
 
-    .nav.is-open .nav__list {
+    .nav.is-open .nav__drawer {
+        transform: translateX(0);
+    }
+
+    .nav__list {
         flex-direction: column;
-        gap: 2rem;
-        text-align: center;
+        gap: 0;
     }
 
-    .nav.is-open .nav__link {
-        font-size: var(--fs-xl);
+    .nav__list li {
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav__list li:last-child {
+        border-bottom: none;
+    }
+
+    .nav__link {
+        display: block;
+        padding: 1rem 0;
+        font-size: var(--fs-md);
+    }
+
+    .nav__link::after {
+        display: none;
+    }
+
+    /* Mobile CTA at the bottom of the drawer */
+    .nav__cta-mobile {
+        display: block;
+        margin-top: auto;
+        text-align: center;
     }
 }
 
