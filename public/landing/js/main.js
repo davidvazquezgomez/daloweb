@@ -7,66 +7,64 @@
   "use strict";
 
   /* ---------- DOM refs ---------- */
-  const header = document.getElementById("header");
-  const hamburger = document.getElementById("hamburger");
-  const nav = document.getElementById("nav");
-  const navLinks = document.querySelectorAll(".nav__link");
-  const contactForm = document.getElementById("contactForm");
-  const formFeedback = document.getElementById("formFeedback");
-  const floatingCta = document.getElementById("floatingCta");
-  const contactSection = document.getElementById("contacto");
+  var header = document.getElementById("header");
+  var hamburger = document.getElementById("hamburger");
+  var nav = document.getElementById("nav");
+  var navLinks = document.querySelectorAll(".nav__link");
+  var contactForm = document.getElementById("contactForm");
+  var formFeedback = document.getElementById("formFeedback");
+  var floatingCta = document.getElementById("floatingCta");
+  var contactSection = document.getElementById("contacto");
 
   /* ==========================================================
      1. Mobile menu toggle
      ========================================================== */
   function closeMenu() {
+    if (!nav) return;
     nav.classList.remove("is-open");
-    hamburger.classList.remove("is-active");
-    hamburger.setAttribute("aria-expanded", "false");
+    if (hamburger) {
+      hamburger.classList.remove("is-active");
+      hamburger.setAttribute("aria-expanded", "false");
+    }
     document.body.style.overflow = "";
   }
 
-  hamburger.addEventListener("click", function () {
-    const isOpen = nav.classList.toggle("is-open");
-    hamburger.classList.toggle("is-active");
-    hamburger.setAttribute("aria-expanded", isOpen);
-    document.body.style.overflow = isOpen ? "hidden" : "";
-  });
-
-  // Close mobile menu when clicking the overlay (outside the drawer)
-  nav.addEventListener("click", function (e) {
-    if (e.target === nav) closeMenu();
-  });
-
-  // Close mobile menu on link click
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", function () {
-      closeMenu();
+  if (hamburger && nav) {
+    hamburger.addEventListener("click", function () {
+      var isOpen = nav.classList.toggle("is-open");
+      hamburger.classList.toggle("is-active");
+      hamburger.setAttribute("aria-expanded", isOpen);
+      document.body.style.overflow = isOpen ? "hidden" : "";
     });
-  });
 
-  // Close mobile menu on mobile CTA click
-  var mobileCta = nav.querySelector(".nav__cta-mobile");
-  if (mobileCta) {
-    mobileCta.addEventListener("click", function () {
-      closeMenu();
+    nav.addEventListener("click", function (e) {
+      if (e.target === nav) closeMenu();
     });
+
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener("click", closeMenu);
+    }
+
+    var mobileCta = nav.querySelector(".nav__cta-mobile");
+    if (mobileCta) {
+      mobileCta.addEventListener("click", closeMenu);
+    }
   }
 
   /* ==========================================================
      2. Shrink header on scroll
      ========================================================== */
-  var lastScroll = 0;
   window.addEventListener(
     "scroll",
     function () {
-      var scrollY = window.pageYOffset;
-      if (scrollY > 50) {
-        header.style.boxShadow = "0 2px 16px rgba(0,0,0,.08)";
-      } else {
-        header.style.boxShadow = "";
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      if (header) {
+        if (scrollY > 50) {
+          header.style.boxShadow = "0 2px 16px rgba(0,0,0,.08)";
+        } else {
+          header.style.boxShadow = "";
+        }
       }
-      // Floating CTA bar
       if (floatingCta && contactSection) {
         var contactTop = contactSection.offsetTop;
         if (scrollY > 600 && scrollY < contactTop - window.innerHeight) {
@@ -75,147 +73,94 @@
           floatingCta.classList.remove("is-visible");
         }
       }
-      lastScroll = scrollY;
     },
-    { passive: true },
+    { passive: true }
   );
 
   /* ==========================================================
-     3. Active nav link on scroll (Intersection Observer)
+     3. Active nav link on scroll
      ========================================================== */
-  var sections = document.querySelectorAll("section[id]");
+  if (window.IntersectionObserver) {
+    var sectionObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute("id");
+          for (var j = 0; j < navLinks.length; j++) {
+            var link = navLinks[j];
+            link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+          }
+        }
+      });
+    }, { rootMargin: "-40% 0px -60% 0px" });
 
-  var observerOptions = {
-    root: null,
-    rootMargin: "-40% 0px -60% 0px",
-    threshold: 0,
-  };
-
-  var sectionObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        var id = entry.target.getAttribute("id");
-        navLinks.forEach(function (link) {
-          link.classList.toggle(
-            "active",
-            link.getAttribute("href") === "#" + id,
-          );
-        });
-      }
-    });
-  }, observerOptions);
-
-  sections.forEach(function (section) {
-    sectionObserver.observe(section);
-  });
+    var sections = document.querySelectorAll("section[id]");
+    for (var k = 0; k < sections.length; k++) {
+      sectionObserver.observe(sections[k]);
+    }
+  }
 
   /* ==========================================================
      4. Scroll reveal
      ========================================================== */
-  // Add .reveal to all major section children
-  var revealSelectors = [
-    ".card",
-    ".process__step",
-    ".project-card",
-    ".price-card",
-    ".why-card",
-    ".testimonial",
-    ".contact-form",
-    ".contact__info",
-    ".hero__content",
-    ".hero__visual",
-    ".stat",
-  ];
-
-  revealSelectors.forEach(function (selector) {
-    var elements = document.querySelectorAll(selector);
-    var count = elements.length;
-    var baseDelay = count > 8 ? 0.04 : 0.1;
-    elements.forEach(function (el, index) {
-      el.classList.add("reveal");
-      el.style.transitionDelay = index * baseDelay + "s";
-    });
-  });
-
-  var revealElements = document.querySelectorAll(".reveal");
-
-  var revealObserver = new IntersectionObserver(
-    function (entries) {
+  if (window.IntersectionObserver) {
+    var revealSelectors = [".card", ".process__step", ".project-card", ".price-card", ".why-card", ".testimonial", ".contact-form", ".contact__info", ".hero__content", ".hero__visual", ".stat"];
+    
+    var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
           entry.target.classList.add("is-visible");
           revealObserver.unobserve(entry.target);
         }
       });
-    },
-    {
-      root: null,
-      rootMargin: "0px 0px -80px 0px",
-      threshold: 0.1,
-    },
-  );
+    }, { rootMargin: "0px 0px -80px 0px", threshold: 0.1 });
 
-  revealElements.forEach(function (el) {
-    revealObserver.observe(el);
-  });
-
-  /* ==========================================================
-     5. Contact form — basic client-side validation + UX feedback
-     ========================================================== */
-  contactForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    var nombre = contactForm.elements.nombre;
-    var email = contactForm.elements.email;
-    var tipo = contactForm.elements.tipo;
-    var mensaje = contactForm.elements.mensaje;
-
-    // Simple validation
-    if (!nombre.value.trim()) {
-      showFeedback("Por favor, introduce tu nombre.", true);
-      nombre.focus();
-      return;
-    }
-
-    var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email.value.trim())) {
-      showFeedback("Introduce un email válido.", true);
-      email.focus();
-      return;
-    }
-
-    if (!tipo.value) {
-      showFeedback("Selecciona un tipo de proyecto.", true);
-      tipo.focus();
-      return;
-    }
-
-    if (!mensaje.value.trim()) {
-      showFeedback("Escribe un mensaje breve sobre tu proyecto.", true);
-      mensaje.focus();
-      return;
-    }
-
-    // Simulated success (replace with real endpoint)
-    showFeedback("¡Mensaje enviado! Te contactaremos pronto.", false);
-    contactForm.reset();
-  });
-
-  function showFeedback(text, isError) {
-    formFeedback.textContent = text;
-    formFeedback.style.color = isError ? "#e74c3c" : "var(--color-accent)";
-
-    // Auto-clear after 5s
-    setTimeout(function () {
-      formFeedback.textContent = "";
-    }, 5000);
+    revealSelectors.forEach(function (selector) {
+      var elements = document.querySelectorAll(selector);
+      for (var m = 0; m < elements.length; m++) {
+        var el = elements[m];
+        el.classList.add("reveal");
+        el.style.transitionDelay = m * 0.05 + "s";
+        revealObserver.observe(el);
+      }
+    });
   }
 
   /* ==========================================================
-     7. Smooth scroll for CTA buttons (fallback for older browsers)
+     5. Contact form
      ========================================================== */
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener("click", function (e) {
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var nombre = contactForm.elements.nombre;
+      var email = contactForm.elements.email;
+      var tipo = contactForm.elements.tipo;
+      var mensaje = contactForm.elements.mensaje;
+
+      var currentLangData = window.translations[window.currentLang || 'es'];
+
+      if (!nombre.value.trim() || !email.value.trim() || !tipo.value || !mensaje.value.trim()) {
+        showFeedback(currentLangData.form_error || "Error", true);
+        return;
+      }
+
+      showFeedback(currentLangData.form_success || "Success", false);
+      contactForm.reset();
+    });
+  }
+
+  function showFeedback(text, isError) {
+    if (!formFeedback) return;
+    formFeedback.textContent = text;
+    formFeedback.style.color = isError ? "#e74c3c" : "var(--color-accent)";
+    setTimeout(function () { formFeedback.textContent = ""; }, 5000);
+  }
+
+  /* ==========================================================
+     6. Smooth scroll
+     ========================================================== */
+  var anchors = document.querySelectorAll('a[href^="#"]');
+  for (var n = 0; n < anchors.length; n++) {
+    anchors[n].addEventListener("click", function (e) {
       var targetId = this.getAttribute("href");
       if (targetId === "#") return;
       var target = document.querySelector(targetId);
@@ -224,93 +169,123 @@
         target.scrollIntoView({ behavior: "smooth" });
       }
     });
+  }
+
+  /* ==========================================================
+     7. Typewriter effect
+     ========================================================== */
+  var typewriterEl = document.getElementById("typewriter");
+  var wordIndex = 0;
+  var charIndex = 0;
+  var isDeleting = false;
+  var typeWriteInterval = null;
+
+  function typeWrite() {
+    if (!typewriterEl) return;
+    
+    var lang = window.currentLang || 'es';
+    if (!window.translations || !window.translations[lang]) return;
+    
+    var words = window.translations[lang].typewriter_words;
+    if (!words) return;
+
+    var current = words[wordIndex];
+    if (isDeleting) {
+      charIndex--;
+      typewriterEl.textContent = current.substring(0, charIndex);
+    } else {
+      charIndex++;
+      typewriterEl.textContent = current.substring(0, charIndex);
+    }
+    
+    var delay = isDeleting ? 40 : 80;
+    if (!isDeleting && charIndex === current.length) {
+      delay = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      delay = 400;
+    }
+    typeWriteInterval = setTimeout(typeWrite, delay);
+  }
+
+  // Handle language change for typewriter
+  window.addEventListener('languageChanged', function() {
+    if (typeWriteInterval) {
+      clearTimeout(typeWriteInterval);
+    }
+    wordIndex = 0;
+    charIndex = 0;
+    isDeleting = false;
+    typeWrite();
   });
 
   /* ==========================================================
-     8. Typewriter effect
+     8. Animated counters
      ========================================================== */
-  var typewriterEl = document.getElementById("typewriter");
-  if (typewriterEl) {
-    var words = [
-      "webs profesionales",
-      "apps m\u00F3viles",
-      "sistemas de reservas",
-      "software a medida",
-    ];
-    var wordIndex = 0;
-    var charIndex = 0;
-    var isDeleting = false;
+  if (window.IntersectionObserver) {
+    var counters = document.querySelectorAll(".stat__number");
+    var counterObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var target = parseFloat(el.getAttribute("data-target"));
+          var isDecimal = el.hasAttribute("data-decimal");
+          var duration = 2000;
+          var startTime = null;
+          
+          function animate(currentTime) {
+            if (!startTime) startTime = currentTime;
+            var progress = Math.min((currentTime - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            var current = target * eased;
+            if (isDecimal) { 
+              el.textContent = current.toFixed(1); 
+            } else { 
+              el.textContent = "+" + Math.floor(current); 
+            }
+            if (progress < 1) { 
+              requestAnimationFrame(animate); 
+            } else { 
+              el.textContent = isDecimal ? target.toFixed(1) + " \u2605" : "+" + target; 
+            }
+          }
+          requestAnimationFrame(animate);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
 
-    function typeWrite() {
-      var current = words[wordIndex];
-      if (isDeleting) {
-        charIndex--;
-        typewriterEl.textContent = current.substring(0, charIndex);
-      } else {
-        charIndex++;
-        typewriterEl.textContent = current.substring(0, charIndex);
-      }
-      var delay = isDeleting ? 40 : 80;
-      if (!isDeleting && charIndex === current.length) {
-        delay = 2000;
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        wordIndex = (wordIndex + 1) % words.length;
-        delay = 400;
-      }
-      setTimeout(typeWrite, delay);
+    for (var o = 0; o < counters.length; o++) {
+      counterObserver.observe(counters[o]);
     }
-
-    typeWrite();
   }
 
   /* ==========================================================
-     9. Animated counters
+     9. Theme toggle
      ========================================================== */
-  var counters = document.querySelectorAll(".stat__number");
-  if (counters.length) {
-    var counterObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            var el = entry.target;
-            var target = parseFloat(el.getAttribute("data-target"));
-            var isDecimal = el.hasAttribute("data-decimal");
-            var duration = 2000;
-            var startTime = null;
-
-            function animate(currentTime) {
-              if (!startTime) startTime = currentTime;
-              var progress = Math.min((currentTime - startTime) / duration, 1);
-              var eased = 1 - Math.pow(1 - progress, 3);
-              var current = target * eased;
-
-              if (isDecimal) {
-                el.textContent = current.toFixed(1);
-              } else {
-                el.textContent = "+" + Math.floor(current);
-              }
-
-              if (progress < 1) {
-                requestAnimationFrame(animate);
-              } else {
-                el.textContent = isDecimal
-                  ? target.toFixed(1) + " \u2605"
-                  : "+" + target;
-              }
-            }
-
-            requestAnimationFrame(animate);
-            counterObserver.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.5 },
-    );
-
-    counters.forEach(function (counter) {
-      counterObserver.observe(counter);
+  var themeToggle = document.getElementById("theme-toggle");
+  if (themeToggle) {
+    var sunIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    var moonIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    
+    var currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'light') { 
+      document.body.classList.add('light-theme'); 
+      themeToggle.innerHTML = moonIcon; 
+    } else { 
+      themeToggle.innerHTML = sunIcon; 
+    }
+    
+    themeToggle.addEventListener('click', function() { 
+      document.body.classList.toggle('light-theme'); 
+      var isLight = document.body.classList.contains('light-theme'); 
+      themeToggle.innerHTML = isLight ? moonIcon : sunIcon; 
+      localStorage.setItem('theme', isLight ? 'light' : 'dark'); 
     });
   }
+
+  // Initial typewriter start
+  typeWrite();
 })();
