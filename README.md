@@ -43,3 +43,13 @@ daloweb/
 ## Licencia
 
 Todos los derechos reservados © DaloWeb.
+
+## Develop Changes
+- Added dark/light mode theme (See top-right icon)
+- Added embeded translation to PT-GB-FR-IT-ES
+- Added neon effect into top title and foot title.
+- Added NEW banner on top to the Booking functionality.
+- In "your we ready on days" changed the banner message to "Somos capaces de tenerte una web lista en 3 días si nos das libre elección de diseño, por supuesto, previo estudio de tu negocio" -> We don't want compromise our fastly with customer choises....
+- Changed tecnologic stack message and added some tecnologies additional
+- Removed in the price of 200€ the contact form as part as it. I think 200€ must be only 3 pages (scroll down or whatever) BUT 3 not 5, composition:
+``` HEADER -> Company -> Letter -> PhotoCarousel -> Contact -> Bookings -> Company History -> Personalized Space-> Where I am -> Footer  (client choise 3 and if they want include something else, pay (header, contact and footer included in all web))```
