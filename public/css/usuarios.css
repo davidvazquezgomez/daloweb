@@ -1,0 +1,298 @@
+/* ===================================================
+   DaloWeb — Usuarios Styles
+   =================================================== */
+
+/* ---------- Header ---------- */
+.usuarios-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.usuarios-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* ---------- Búsqueda ---------- */
+.usuarios-search {
+    display: flex;
+    gap: .6rem;
+    margin-bottom: 1.25rem;
+}
+
+.usuarios-search .form-input {
+    max-width: 320px;
+}
+
+/* ---------- Tabla ---------- */
+.tabla-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+}
+
+.tabla thead {
+    border-bottom: 2px solid var(--admin-border);
+}
+
+.tabla th {
+    text-align: left;
+    padding: .7rem .85rem;
+    font-weight: 600;
+    color: var(--admin-text-soft);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.tabla td {
+    padding: .7rem .85rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.tabla tbody tr {
+    transition: background var(--admin-transition);
+}
+
+.tabla tbody tr:hover {
+    background: var(--admin-accent-light);
+}
+
+/* ---------- Usuario link ---------- */
+.usuario-link {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    color: var(--admin-text);
+    font-weight: 500;
+}
+
+.usuario-link:hover {
+    color: var(--admin-accent);
+}
+
+.usuario-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--admin-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* ---------- Paginación ---------- */
+.paginacion {
+    display: flex;
+    justify-content: center;
+}
+
+.paginacion-nav {
+    display: flex;
+    gap: .3rem;
+}
+
+.paginacion-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 .5rem;
+    border-radius: var(--admin-radius-sm);
+    font-size: .85rem;
+    color: var(--admin-text-soft);
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    text-decoration: none;
+    transition: all var(--admin-transition);
+}
+
+.paginacion-btn:hover {
+    color: var(--admin-text);
+    border-color: var(--admin-accent);
+}
+
+.paginacion-btn--active {
+    background: var(--admin-accent);
+    color: #fff;
+    border-color: var(--admin-accent);
+}
+
+.paginacion-btn--disabled {
+    opacity: .4;
+    pointer-events: none;
+}
+
+/* ---------- Perfil (detalle usuario) ---------- */
+.perfil {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+}
+
+.perfil__header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.perfil__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--admin-accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.perfil__info h2 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: .15rem;
+}
+
+.perfil__info .badge {
+    margin-top: .35rem;
+}
+
+.perfil__delete {
+    margin-left: auto;
+}
+
+.perfil__stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0;
+}
+
+.perfil__stat {
+    padding: 1.25rem 1.5rem;
+    border-right: 1px solid var(--admin-border);
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.perfil__stat:last-child {
+    border-right: none;
+}
+
+.perfil__stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: .2rem;
+}
+
+.perfil__stat-label {
+    font-size: .8rem;
+    color: var(--admin-text-soft);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .usuarios-search {
+        flex-wrap: wrap;
+    }
+
+    .usuarios-search .form-input {
+        max-width: 100%;
+        flex: 1;
+    }
+
+    .perfil__header {
+        flex-wrap: wrap;
+    }
+
+    .perfil__delete {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .perfil__stats {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .perfil__stat {
+        border-right: none;
+    }
+
+    .perfil__stat:nth-child(odd) {
+        border-right: 1px solid var(--admin-border);
+    }
+}
+
+/* ---------- Secciones de perfil ---------- */
+.perfil-seccion {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    margin-top: 1.25rem;
+    overflow: hidden;
+}
+
+.perfil-seccion__titulo {
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.perfil-seccion__total {
+    padding: .75rem 1.5rem;
+    text-align: right;
+    font-size: .95rem;
+    border-top: 1px solid var(--admin-border);
+    color: var(--admin-text-soft);
+}
+
+.perfil-seccion__nota {
+    padding: .75rem 1.5rem;
+    font-size: .8rem;
+}
+
+/* Demos permisos */
+.demos-permisos {
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.demo-permiso {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    background: var(--admin-surface-2);
+    padding: .4rem .75rem;
+    border-radius: var(--admin-radius-sm);
+    font-size: .85rem;
+}
+
+.demo-permiso__nombre {
+    font-weight: 500;
+}
+
+/* importe classes for show page */
+.importe--positivo {
+    color: var(--admin-success);
+    font-weight: 600;
+}

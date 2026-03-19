@@ -1,0 +1,288 @@
+/* ===================================================
+   DaloWeb — Kanban Styles
+   =================================================== */
+
+/* ---------- Header ---------- */
+.kanban-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.kanban-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* ---------- Board ---------- */
+.kanban {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    min-height: 60vh;
+}
+
+.kanban__col {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+}
+
+.kanban__col-header {
+    padding: .85rem 1rem;
+    font-weight: 600;
+    font-size: .9rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.kanban__col-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.kanban__col-dot--pendiente {
+    background: #ef4444;
+}
+
+.kanban__col-dot--progreso {
+    background: #f59e0b;
+}
+
+.kanban__col-dot--completado {
+    background: #22c55e;
+}
+
+.kanban__col-count {
+    margin-left: auto;
+    background: var(--admin-accent-light);
+    color: var(--admin-accent);
+    font-size: .75rem;
+    font-weight: 700;
+    padding: .15rem .5rem;
+    border-radius: 10px;
+}
+
+/* ---------- Cards ---------- */
+.kanban__cards {
+    flex: 1;
+    padding: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    overflow-y: auto;
+    min-height: 60px;
+}
+
+.kanban__card {
+    background: var(--admin-surface-2);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    padding: .75rem;
+    cursor: pointer;
+    transition: border-color var(--admin-transition), transform .15s;
+}
+
+.kanban__card:hover {
+    border-color: var(--admin-accent);
+    transform: translateY(-1px);
+}
+
+.kanban__card--pendiente {
+    border-left: 3px solid #ef4444;
+}
+
+.kanban__card--pendiente:hover {
+    border-color: #ef4444;
+}
+
+.kanban__card--en_progreso {
+    border-left: 3px solid #f59e0b;
+}
+
+.kanban__card--en_progreso:hover {
+    border-color: #f59e0b;
+}
+
+.kanban__card--completado {
+    border-left: 3px solid #22c55e;
+}
+
+.kanban__card--completado:hover {
+    border-color: #22c55e;
+}
+
+.kanban__card--ghost {
+    opacity: .4;
+}
+
+.kanban__card--drag {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .3);
+}
+
+.kanban__card-title {
+    font-weight: 600;
+    font-size: .9rem;
+    margin-bottom: .35rem;
+}
+
+.kanban__card-asignado {
+    font-size: .78rem;
+    color: var(--admin-accent);
+    display: block;
+    margin-bottom: .35rem;
+}
+
+.kanban__card-footer {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    font-size: .75rem;
+    color: var(--admin-text-soft);
+}
+
+.kanban__card-fecha,
+.kanban__card-comments {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+/* ---------- Detalle ---------- */
+.detalle-meta {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    font-size: .85rem;
+    color: var(--admin-text-soft);
+}
+
+.detalle-badge {
+    padding: .2rem .65rem;
+    border-radius: 10px;
+    font-size: .75rem;
+    font-weight: 700;
+}
+
+.detalle-badge--pendiente {
+    background: rgba(239, 68, 68, .15);
+    color: #ef4444;
+}
+
+.detalle-badge--en_progreso {
+    background: rgba(245, 158, 11, .15);
+    color: #f59e0b;
+}
+
+.detalle-badge--completado {
+    background: rgba(34, 197, 94, .15);
+    color: #22c55e;
+}
+
+.detalle-desc {
+    color: var(--admin-text);
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.detalle-sep {
+    border: none;
+    border-top: 1px solid var(--admin-border);
+    margin: 1.25rem 0;
+}
+
+/* ---------- Comentarios ---------- */
+.comentarios h4 {
+    font-size: .95rem;
+    margin-bottom: .75rem;
+}
+
+.comentarios__vacio {
+    color: var(--admin-text-soft);
+    font-size: .85rem;
+    font-style: italic;
+}
+
+.comentario {
+    background: var(--admin-bg);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius-sm);
+    padding: .65rem .85rem;
+    margin-bottom: .6rem;
+}
+
+.comentario__header {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .82rem;
+    margin-bottom: .3rem;
+}
+
+.comentario__fecha {
+    color: var(--admin-text-soft);
+    font-size: .75rem;
+}
+
+.comentario__delete {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: var(--admin-text-soft);
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity var(--admin-transition);
+    line-height: 1;
+}
+
+.comentario:hover .comentario__delete {
+    opacity: 1;
+}
+
+.comentario__delete:hover {
+    color: var(--admin-danger);
+}
+
+.comentario__texto {
+    font-size: .85rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.comentario-form {
+    display: flex;
+    gap: .6rem;
+    align-items: flex-end;
+    margin-top: .75rem;
+}
+
+.comentario-form textarea {
+    flex: 1;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .kanban {
+        grid-template-columns: 1fr;
+    }
+
+    .kanban__col {
+        min-height: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}

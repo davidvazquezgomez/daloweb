@@ -1,0 +1,160 @@
+/* ── Demos module ──────────────────────────────── */
+
+.demos-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.demos-header h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.demos-header__actions {
+    display: flex;
+    gap: .5rem;
+}
+
+/* Alerta carpetas nuevas */
+.demos-alerta {
+    background: rgba(234, 179, 8, .1);
+    border: 1px solid rgba(234, 179, 8, .3);
+    color: var(--admin-warning);
+    padding: .75rem 1rem;
+    border-radius: var(--admin-radius-sm);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .9rem;
+}
+
+/* Grid de cards */
+.demos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.demos-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 0;
+    font-size: .95rem;
+}
+
+/* Card */
+.demo-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+    transition: border-color var(--admin-transition);
+}
+
+.demo-card:hover {
+    border-color: var(--admin-accent);
+}
+
+/* Thumbnail */
+.demo-card__thumb {
+    position: relative;
+    height: 160px;
+    background: var(--admin-surface-2);
+    overflow: hidden;
+}
+
+.demo-card__thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.demo-card__placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: var(--admin-text-soft);
+}
+
+.demo-card__badge {
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    padding: .2rem .5rem;
+    border-radius: 4px;
+}
+
+.demo-card__badge--publica {
+    background: rgba(34, 197, 94, .15);
+    color: var(--admin-success);
+}
+
+.demo-card__badge--privada {
+    background: rgba(239, 68, 68, .15);
+    color: var(--admin-danger);
+}
+
+/* Body */
+.demo-card__body {
+    padding: .85rem 1rem .5rem;
+}
+
+.demo-card__title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: .35rem;
+}
+
+.demo-card__techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .3rem;
+    margin-top: .5rem;
+}
+
+.demo-card__tech {
+    font-size: .7rem;
+    background: var(--admin-surface-2);
+    color: var(--admin-text-soft);
+    padding: .15rem .45rem;
+    border-radius: 3px;
+}
+
+/* Actions */
+.demo-card__actions {
+    display: flex;
+    gap: .35rem;
+    padding: .5rem 1rem .85rem;
+}
+
+/* Botón success para visibilidad activa */
+.btn--success {
+    color: var(--admin-success);
+    border-color: var(--admin-success);
+}
+
+.btn--success:hover {
+    background: rgba(34, 197, 94, .1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .demos-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .75rem;
+    }
+
+    .demos-grid {
+        grid-template-columns: 1fr;
+    }
+}
