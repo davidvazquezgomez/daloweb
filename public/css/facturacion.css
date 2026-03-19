@@ -1,0 +1,204 @@
+/* ===================================================
+   DaloWeb — Facturación Styles
+   =================================================== */
+
+/* ---------- Header ---------- */
+.facturacion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.facturacion-header h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.facturacion-header__actions {
+    display: flex;
+    gap: .6rem;
+    align-items: center;
+}
+
+.form-input--inline {
+    width: auto;
+    min-width: 100px;
+}
+
+/* ---------- Resumen ---------- */
+.facturacion-resumen {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.resumen-card {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+.resumen-card__label {
+    font-size: .82rem;
+    color: var(--admin-text-soft);
+    font-weight: 500;
+}
+
+.resumen-card__value {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.resumen-card--ingresos {
+    border-left: 3px solid var(--admin-success);
+}
+
+.resumen-card--ingresos .resumen-card__value {
+    color: var(--admin-success);
+}
+
+.resumen-card--gastos {
+    border-left: 3px solid var(--admin-danger);
+}
+
+.resumen-card--gastos .resumen-card__value {
+    color: var(--admin-danger);
+}
+
+.resumen-card--balance {
+    border-left: 3px solid var(--admin-accent);
+}
+
+.resumen-card--balance .resumen-card__value {
+    color: var(--admin-accent);
+}
+
+/* ---------- Gráfica ---------- */
+.facturacion-chart {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ---------- Grid tablas ---------- */
+.facturacion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+}
+
+.facturacion-seccion {
+    background: var(--admin-surface);
+    border: 1px solid var(--admin-border);
+    border-radius: var(--admin-radius);
+    overflow: hidden;
+}
+
+.facturacion-seccion__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid var(--admin-border);
+}
+
+.facturacion-seccion__header h3 {
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.facturacion-seccion .tabla-wrapper {
+    margin-bottom: 0;
+}
+
+.facturacion-seccion .tabla td,
+.facturacion-seccion .tabla th {
+    padding: .55rem .75rem;
+    font-size: .82rem;
+}
+
+/* ---------- Importes ---------- */
+.importe {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.importe--positivo {
+    color: var(--admin-success);
+}
+
+.importe--negativo {
+    color: var(--admin-danger);
+}
+
+/* ---------- Badges ---------- */
+.badge--tipo {
+    background: rgba(59, 130, 246, .15);
+    color: #3b82f6;
+}
+
+.badge--cat {
+    background: rgba(245, 158, 11, .15);
+    color: #f59e0b;
+}
+
+.badge--recurrente {
+    background: rgba(108, 92, 231, .15);
+    color: var(--admin-accent);
+    font-size: .7rem;
+    padding: .1rem .4rem;
+}
+
+/* ---------- Acciones ---------- */
+.acciones-cell {
+    white-space: nowrap;
+    display: flex;
+    gap: .25rem;
+}
+
+/* ---------- Checkbox ---------- */
+.form-group--check {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: .55rem;
+}
+
+.check-label {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    font-size: .875rem;
+    color: var(--admin-text);
+    cursor: pointer;
+}
+
+.check-label input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--admin-accent);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .facturacion-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .facturacion-resumen {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+}
