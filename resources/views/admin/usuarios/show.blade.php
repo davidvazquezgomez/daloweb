@@ -206,12 +206,6 @@
 @endsection
 
 @push('js')
-<script>
-    const USUARIO_ID = {
-        {
-            $usuario - > id
-        }
-    };
-</script>
+<script>const USUARIO_ID = @json($usuario->id);</script>
 <script src="{{ asset('js/usuarios.js') }}"></script>
 @endpush
