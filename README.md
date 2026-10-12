@@ -9,7 +9,7 @@ Plataforma web de **DaloWeb**, agencia digital especializada en diseño web prof
 | Backend | Laravel 12 · PHP 8.3 |
 | Base de datos | MariaDB |
 | Frontend | HTML5 · CSS3 · JavaScript vanilla (sin Node.js) |
-| Auth | Laravel Sanctum · Sesiones en BD |
+| Auth | Laravel Sanctum · Sesiones en archivos (BD configurable) |
 | Librerías CDN | SortableJS (Kanban) · Chart.js (Facturación) |
 | Email | Laravel Mail + SMTP |
 | Hosting | Plesk · Apache · HTTPS|
@@ -76,7 +76,6 @@ daloweb/
 ├── routes/web.php                              # Todas las rutas (37 endpoints)
 ├── deploy.sh                                   # Script de despliegue
 ├── DEPLOY.md                                   # Guía despliegue Plesk
-├── ANALISIS_PANEL_ADMIN.md                     # Documento de análisis completo
 └── .env.example                                # Plantilla variables de entorno
 ```
 
@@ -165,14 +164,22 @@ Ver [DEPLOY.md](DEPLOY.md) para la guía completa de despliegue en Plesk.
 
 ```bash
 # Resumen rápido
-cp .env.example .env        # Configurar credenciales
+cp .env.example .env        # Solo si no existe; configurar credenciales
 composer install --no-dev    # Instalar dependencias
-php artisan key:generate     # Generar clave
+php artisan key:generate --force # Solo si APP_KEY está vacía
 mysql -u user -p daloweb < database/daloweb.sql  # Importar BD
 bash deploy.sh               # Optimizar caches y permisos
 ```
 
 DocumentRoot en Plesk → `public/`
+
+Diagnóstico sin mostrar secretos: `php artisan app:check-production`.
+
+Pruebas locales (con dependencias de desarrollo):
+
+```bash
+vendor/bin/phpunit --bootstrap vendor/autoload.php tests/Feature/ProductionReadinessTest.php
+```
 
 ## Seguridad
 
@@ -185,7 +192,7 @@ DocumentRoot en Plesk → `public/`
 - Demos en `storage/` (no accesibles directamente)
 - Path-traversal check en servicio de archivos de demos
 - Sesiones httpOnly + SameSite=Lax
-- Rate limiting en login
+- Rate limiting en login y contacto
 
 ## Licencia
 

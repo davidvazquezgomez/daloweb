@@ -13,12 +13,12 @@ use App\Http\Controllers\Admin\DemoController;
 
 // --- Landing ---
 Route::get('/', [InicioController::class, 'index'])->name('inicio');
-Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto');
+Route::post('/contacto', [ContactoController::class, 'enviar'])->middleware('throttle:5,1')->name('contacto');
 
 // --- Auth ---
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'mostrar'])->name('login');
-    Route::post('/login', [LoginController::class, 'autenticar']);
+    Route::post('/login', [LoginController::class, 'autenticar'])->middleware('throttle:5,1');
 });
 Route::post('/logout', [LoginController::class, 'salir'])->middleware('auth')->name('logout');
 

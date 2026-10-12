@@ -613,34 +613,42 @@
                     <h2 class="section__title" data-i18n="contact_title">Cuéntanos tu proyecto</h2>
                     <p class="section__subtitle" data-i18n="contact_subtitle">Rellena el formulario y te responderemos en menos de 24 h.</p>
 
-                    <form class="contact-form" id="contactForm" action="{{ route('contacto') }}" method="POST" novalidate>
+                    <form class="contact-form" id="contactForm" action="{{ route('contacto') }}" method="POST">
                         @csrf
                         <div class="contact-form__group">
                             <label for="nombre" data-i18n="form_name">Nombre</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" data-i18n-placeholder="form_name_placeholder" required>
+                            <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" maxlength="100" placeholder="Tu nombre" data-i18n-placeholder="form_name_placeholder" required>
                         </div>
                         <div class="contact-form__group">
                             <label for="email" data-i18n="form_email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="tu@email.com" data-i18n-placeholder="form_email_placeholder" required>
+                            <input type="email" id="email" name="email" value="{{ old('email') }}" maxlength="150" placeholder="tu@email.com" data-i18n-placeholder="form_email_placeholder" required>
                         </div>
                         <div class="contact-form__group">
                             <label for="tipo" data-i18n="form_type">Tipo de proyecto</label>
                             <select id="tipo" name="tipo" required>
-                                <option value="" disabled selected data-i18n="form_type_default">Selecciona una opción</option>
-                                <option value="web" data-i18n="form_type_web">Página web</option>
-                                <option value="app" data-i18n="form_type_app">App móvil</option>
-                                <option value="reservas" data-i18n="form_type_reservas">Sistema de reservas</option>
-                                <option value="medida" data-i18n="form_type_medida">Aplicación a medida</option>
+                                <option value="" disabled @selected(!old('tipo')) data-i18n="form_type_default">Selecciona una opción</option>
+                                <option value="web" @selected(old('tipo') === 'web') data-i18n="form_type_web">Página web</option>
+                                <option value="app" @selected(old('tipo') === 'app') data-i18n="form_type_app">App móvil</option>
+                                <option value="reservas" @selected(old('tipo') === 'reservas') data-i18n="form_type_reservas">Sistema de reservas</option>
+                                <option value="medida" @selected(old('tipo') === 'medida') data-i18n="form_type_medida">Aplicación a medida</option>
                             </select>
                         </div>
                         <div class="contact-form__group contact-form__group--full">
                             <label for="mensaje" data-i18n="form_message">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" rows="5" placeholder="Cuéntanos qué necesitas…" data-i18n-placeholder="form_message_placeholder" required></textarea>
+                            <textarea id="mensaje" name="mensaje" rows="5" maxlength="2000" placeholder="Cuéntanos qué necesitas…" data-i18n-placeholder="form_message_placeholder" required>{{ old('mensaje') }}</textarea>
                         </div>
                         <div class="contact-form__group contact-form__group--full">
                             <button type="submit" class="btn btn--primary btn--lg btn--full" data-i18n="form_submit">Enviar mensaje</button>
                         </div>
-                        <div class="contact-form__feedback" id="formFeedback" aria-live="polite"></div>
+                        <div class="contact-form__feedback" id="formFeedback" aria-live="polite">
+                            @if(session('success'))
+                                <p role="status">{{ session('success') }}</p>
+                            @elseif(session('error'))
+                                <p role="alert">{{ session('error') }}</p>
+                            @elseif($errors->any())
+                                <p role="alert">{{ $errors->first() }}</p>
+                            @endif
+                        </div>
                     </form>
 
                     <div class="contact__info">

@@ -12,6 +12,8 @@ class Usuario extends Authenticatable
 
     protected $table = 'usuarios';
 
+    protected $authPasswordName = 'contrasena';
+
     const CREATED_AT = 'creado_en';
     const UPDATED_AT = 'actualizado_en';
 

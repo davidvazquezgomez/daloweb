@@ -19,6 +19,10 @@ class ContactoController extends Controller
         ]);
 
         try {
+            if (config('mail.default') !== 'smtp' || !config('mail.mailers.smtp.host')) {
+                throw new \RuntimeException('El formulario de contacto requiere SMTP configurado.');
+            }
+
             Mail::to('hola@daloweb.es')->send(new CorreoContacto(
                 nombre: $validated['nombre'],
                 email: $validated['email'],
@@ -26,10 +30,10 @@ class ContactoController extends Controller
                 mensaje: $validated['mensaje'],
             ));
 
-            return back()->with('success', 'Mensaje enviado correctamente.');
+            return redirect()->to(route('inicio') . '#contacto')->with('success', 'Mensaje enviado correctamente.');
         } catch (\Exception $e) {
             Log::error('Error enviando contacto: ' . $e->getMessage());
-            return back()->withInput()->with('error', 'Error al enviar el mensaje. Inténtalo de nuevo.');
+            return redirect()->to(route('inicio') . '#contacto')->withInput()->with('error', 'Error al enviar el mensaje. Inténtalo de nuevo.');
         }
     }
 }

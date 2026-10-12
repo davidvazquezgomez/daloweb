@@ -143,8 +143,8 @@
         return;
       }
 
-      showFeedback(currentLangData.form_success || "Success", false);
-      contactForm.reset();
+      // El éxito lo confirma Laravel después de enviar el correo por SMTP.
+      contactForm.submit();
     });
   }
 

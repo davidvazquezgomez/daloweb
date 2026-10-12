@@ -3,11 +3,8 @@
 -- MariaDB / MySQL · UTF-8 mb4
 -- ============================================================
 
-CREATE DATABASE IF NOT EXISTS `daloweb`
-    CHARACTER SET utf8mb4
-    COLLATE utf8mb4_unicode_ci;
-
-USE `daloweb`;
+-- Seleccionar previamente la BD creada en Plesk (phpMyAdmin o mysql ... nombre_bd).
+-- No se crea ni se cambia la BD: el usuario del hosting puede carecer de esos permisos.
 
 -- ------------------------------------------------------------
 -- Tabla: usuarios
