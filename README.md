@@ -222,6 +222,8 @@ Todos los derechos reservados © DaloWeb 2026.
 
 ## Seguimiento de oportunidades
 
+Herramientas comerciales: `/admin/rentabilidad` calcula costes, precio mínimo y contribución antes de impuestos, sin guardar simulaciones ni modificar la oferta pública. Requiere administrador y funciona sin JavaScript ni tablas nuevas. Completar costes reales; no presupone márgenes ni impuestos. Para acordar alcance y recurrencia, usar [la ficha de presupuesto y mantenimiento](PLANTILLA_PRESUPUESTO_Y_MANTENIMIENTO.md).
+
 Panel protegido en `/admin/oportunidades`: estados, origen, presupuesto, venta, coste y notas. La contribución excluye ventas sin coste registrado. Incluye eliminación individual de los datos.
 
 La captura automática está desactivada por defecto. Para preparar la tabla en el despliegue:

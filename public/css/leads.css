@@ -14,4 +14,6 @@
 .lead-message{white-space:pre-wrap}.lead-detail h4{margin-top:1.5rem}.lead-pagination{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin:1.5rem 0}
 .lead-delete summary{cursor:pointer}:focus-visible{outline:3px solid #b8a5ff;outline-offset:3px}
 @media(max-width:800px){.lead-detail,.lead-row{grid-template-columns:1fr}.lead-filters label{width:100%}.lead-metrics{grid-template-columns:1fr 1fr}}
+.pricing-results dt{color:#b2b2c8;margin-top:1.2rem}.pricing-results dd{font-size:1.5rem;margin:.3rem 0 1rem;overflow-wrap:anywhere}
+.lead-detail ul{padding-left:1.25rem;line-height:1.8}.lead-edit a{color:#b8a5ff}
 @media(max-width:440px){.lead-metrics{grid-template-columns:1fr}}

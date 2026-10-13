@@ -40,6 +40,10 @@
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3z"/><path d="m3 5 9 7 9-7"/></svg>
                     Oportunidades
                 </a>
+                <a href="{{ route('admin.rentabilidad') }}" class="sidebar__link {{ request()->routeIs('admin.rentabilidad') ? 'sidebar__link--active' : '' }}">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 11h2m4 0h2M8 15h2m4 0h2M8 19h2m4 0h2"/></svg>
+                    Rentabilidad
+                </a>
                 <a href="{{ route('admin.usuarios') }}" class="sidebar__link {{ request()->routeIs('admin.usuarios*') ? 'sidebar__link--active' : '' }}">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />

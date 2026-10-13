@@ -135,6 +135,40 @@ class LeadWorkflowTest extends TestCase
             ->assertOk()->assertSee('name="origen" value="organico"', false)->assertDontSee('consulta-personal');
     }
 
+    public function test_pricing_calculator_requires_admin_and_starts_without_estimates(): void
+    {
+        $this->get('/admin/rentabilidad')->assertRedirect('/login');
+        $this->post('/admin/rentabilidad')->assertRedirect('/login');
+        $this->actingAs($this->user(RolUsuario::Usuario))->get('/admin/rentabilidad')->assertRedirect('/login');
+        $this->actingAs($this->user(RolUsuario::Admin))->get('/admin/rentabilidad')
+            ->assertOk()->assertViewHas('resultado', null)->assertSee('noindex');
+    }
+
+    public function test_pricing_calculator_uses_margin_on_revenue_and_exposes_loss(): void
+    {
+        $this->actingAs($this->user(RolUsuario::Admin));
+        $datos = ['horas' => 12, 'coste_hora' => 25, 'directos' => 50, 'soporte' => 0, 'captacion' => 25, 'margen' => 40, 'precio_neto' => 200];
+        $resultado = $this->post('/admin/rentabilidad', $datos)->assertOk()->viewData('resultado');
+        $this->assertEquals(375, $resultado['coste']);
+        $this->assertEquals(625, $resultado['minimo']);
+        $this->assertEquals(-175, $resultado['contribucion']);
+        $this->assertEquals(-87.5, $resultado['margen']);
+        $this->assertEquals(-425, $resultado['diferencia']);
+        $this->post('/admin/rentabilidad', array_replace($datos, ['margen' => 0, 'precio_neto' => 0]))
+            ->assertOk()->assertViewHas('resultado', fn ($r) => $r['minimo'] == 375 && $r['margen'] === null);
+        $this->post('/admin/rentabilidad', array_replace($datos, ['horas' => 0, 'directos' => 1, 'captacion' => 0, 'margen' => 30, 'precio_neto' => '']))
+            ->assertOk()->assertViewHas('resultado', fn ($r) => $r['minimo'] == 1.43 && $r['contribucion'] === null);
+    }
+
+    public function test_pricing_calculator_rejects_missing_costs_and_invalid_values(): void
+    {
+        $this->actingAs($this->user(RolUsuario::Admin));
+        $this->from('/admin/rentabilidad')->post('/admin/rentabilidad', [
+            'horas' => [12], 'coste_hora' => -1, 'directos' => '0.001', 'margen' => 100,
+        ])->assertSessionHasErrors(['horas', 'coste_hora', 'directos', 'soporte', 'captacion', 'margen']);
+        $this->get('/admin/rentabilidad')->assertOk()->assertSee('aria-invalid="true"', false);
+    }
+
     private function data(): array
     {
         return ['nombre' => 'Contacto de prueba', 'email' => 'contacto@example.test', 'tipo' => 'web', 'pack' => 'web-profesional', 'origen' => 'publicidad', 'mensaje' => 'Solicito una web.'];

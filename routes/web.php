@@ -38,6 +38,7 @@ Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [PanelController::class, 'index'])->name('panel');
+        Route::match(['get', 'post'], '/rentabilidad', [\App\Http\Controllers\Admin\RentabilidadController::class, 'index'])->name('rentabilidad');
 
         Route::get('/oportunidades', [LeadController::class, 'index'])->name('leads');
         Route::get('/oportunidades/{lead}', [LeadController::class, 'show'])->name('leads.show');
