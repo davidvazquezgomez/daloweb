@@ -2,7 +2,7 @@
     $esPortada = request()->routeIs('inicio');
     $traducible = $esPortada;
     $seo = $seo ?? [
-        'title' => 'DaloWeb — Webs, Apps y Software a Medida',
+        'title' => 'Diseño web, apps y software a medida | DaloWeb',
         'descripcion' => 'Webs profesionales, apps móviles, sistemas de reservas y software a medida para tu negocio. Consulta nuestros proyectos y solicita tu presupuesto.',
         'path' => '/',
     ];
@@ -37,6 +37,19 @@
             'publisher' => ['@id' => $baseUrl . '/#organizacion'],
         ];
     }
+    $schema['@graph'][] = [
+        '@type' => 'WebSite', '@id' => $baseUrl . '/#website',
+        'name' => 'DaloWeb', 'url' => $baseUrl . '/', 'inLanguage' => 'es',
+        'publisher' => ['@id' => $baseUrl . '/#organizacion'],
+    ];
+    if (isset($servicio)) {
+        $schema['@graph'][] = [
+            '@type' => 'Service', '@id' => $canonical . '#servicio',
+            'name' => $servicio['nombre'], 'serviceType' => $servicio['nombre'],
+            'description' => $servicio['descripcion'], 'url' => $canonical,
+            'provider' => ['@id' => $baseUrl . '/#organizacion'],
+        ];
+    }
 @endphp
 <!DOCTYPE html>
 <html lang="es">
@@ -45,9 +58,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $seo['title'] }}</title>
     <meta name="description" content="{{ $seo['descripcion'] }}">
-    @if($seo['noindex'] ?? false)<meta name="robots" content="noindex, follow">@endif
+    @if($seo['noindex'] ?? false)
+        <meta name="robots" content="noindex, follow">
+    @else
+        <meta name="robots" content="index, follow, max-image-preview:large">
+    @endif
+    @if(config('seo.google_verification'))<meta name="google-site-verification" content="{{ config('seo.google_verification') }}">@endif
+    @if(config('seo.bing_verification'))<meta name="msvalidate.01" content="{{ config('seo.bing_verification') }}">@endif
     <link rel="canonical" href="{{ $canonical }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ isset($guia) ? 'article' : 'website' }}">
+    <meta property="og:locale" content="es_ES">
     <meta property="og:site_name" content="DaloWeb">
     <meta property="og:title" content="{{ $seo['title'] }}">
     <meta property="og:description" content="{{ $seo['descripcion'] }}">

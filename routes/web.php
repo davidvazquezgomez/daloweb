@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\DemoController;
 // --- Landing ---
 Route::get('/', [InicioController::class, 'index'])->name('inicio');
 Route::get('/sitemap.xml', [InicioController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [InicioController::class, 'robots'])->name('robots');
 foreach (array_keys(config('servicios')) as $slug) {
     Route::get('/' . $slug, [InicioController::class, 'servicio'])->defaults('slug', $slug)->name('servicio.' . $slug);
 }

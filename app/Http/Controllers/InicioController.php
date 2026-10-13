@@ -56,7 +56,21 @@ class InicioController extends Controller
         );
 
         return response()->view('sitemap', [
-            'urls' => array_map(fn ($path) => rtrim(config('app.url'), '/') . $path, $paths),
+            'urls' => array_map(function ($path) {
+                $guia = str_starts_with($path, '/guias/') ? (config('guias')[substr($path, 7)] ?? null) : null;
+
+                return [
+                    'loc' => rtrim(config('app.url'), '/') . $path,
+                    'lastmod' => $guia['actualizado'] ?? null,
+                ];
+            }, $paths),
         ])->header('Content-Type', 'application/xml; charset=UTF-8');
+    }
+
+    public function robots()
+    {
+        return response()->view('robots', [
+            'sitemap' => rtrim(config('app.url'), '/') . '/sitemap.xml',
+        ])->header('Content-Type', 'text/plain; charset=UTF-8');
     }
 }

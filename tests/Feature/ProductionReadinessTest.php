@@ -165,6 +165,55 @@ class ProductionReadinessTest extends TestCase
         $this->assertCount(4, array_unique($titles));
     }
 
+    public function test_robots_and_sitemap_follow_the_same_domain_and_real_guide_dates(): void
+    {
+        config(['app.url' => 'https://canonical.example.test']);
+        $this->get('/robots.txt')->assertOk()
+            ->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
+            ->assertSee('Sitemap: https://canonical.example.test/sitemap.xml', false)
+            ->assertSee('Disallow: /admin', false)
+            ->assertDontSee('Disallow: /login', false)
+            ->assertDontSee('Disallow: /demo', false);
+        $xml = simplexml_load_string($this->get('/sitemap.xml')->assertOk()->getContent());
+        $locations = [];
+        foreach ($xml->url as $url) {
+            $locations[] = (string) $url->loc;
+            $path = parse_url((string) $url->loc, PHP_URL_PATH);
+            if (str_starts_with($path, '/guias/')) {
+                $this->assertSame(config('guias')[substr($path, 7)]['actualizado'], (string) $url->lastmod);
+            } else {
+                $this->assertFalse(isset($url->lastmod));
+            }
+        }
+        $this->assertCount(count(array_unique($locations)), $locations);
+        foreach (['/login', '/admin', '/demo', '/privacidad', '/aviso-legal', '/cookies'] as $path) {
+            $this->assertNotContains('https://canonical.example.test' . $path, $locations);
+        }
+    }
+
+    public function test_search_verification_metadata_and_service_schema_are_available(): void
+    {
+        config(['seo.google_verification' => 'google-test-code', 'seo.bing_verification' => 'bing-test-code']);
+        $response = $this->get('/diseno-web')->assertOk()
+            ->assertSee('name="google-site-verification" content="google-test-code"', false)
+            ->assertSee('name="msvalidate.01" content="bing-test-code"', false)
+            ->assertSee('index, follow, max-image-preview:large', false);
+        preg_match('/<script type="application\/ld\+json">(.*?)<\/script>/s', $response->getContent(), $json);
+        $graph = json_decode($json[1], true, 512, JSON_THROW_ON_ERROR)['@graph'];
+        $nodes = array_column($graph, null, '@type');
+        $this->assertSame('DaloWeb', $nodes['WebSite']['name']);
+        $this->assertSame('Diseño web', $nodes['Service']['name']);
+        $this->assertSame($nodes['Organization']['@id'], $nodes['Service']['provider']['@id']);
+        $this->get('/')->assertDontSee('privacy_form_summary', false)
+            ->assertDontSee('Responsable:')->assertSee('Diseño web, apps y software a medida | DaloWeb');
+        $slug = array_key_first(config('guias'));
+        $this->get('/guias/' . $slug)->assertSee('property="og:type" content="article"', false);
+        config(['seo.google_verification' => null, 'seo.bing_verification' => null]);
+        $this->get('/')->assertDontSee('name="google-site-verification"', false)
+            ->assertDontSee('name="msvalidate.01"', false);
+        $this->get('/privacidad')->assertSee('noindex, follow', false);
+    }
+
     public function test_external_service_pack_link_preselects_contact_without_javascript(): void
     {
         $this->get('/?pack=sistema-reservas')->assertOk()

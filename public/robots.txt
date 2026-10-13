@@ -1,4 +1,7 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /logout
+Disallow: /contacto
+Disallow: /up
 
 Sitemap: https://www.daloweb.es/sitemap.xml

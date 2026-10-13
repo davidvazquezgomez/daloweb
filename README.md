@@ -222,6 +222,10 @@ Todos los derechos reservados © DaloWeb 2026.
 
 ## Google Analytics y cookies
 
+Archivos SEO listos para subir: `public/sitemap.xml` y `public/robots.txt`. Copiar ambos a la carpeta pública del servidor, donde deben quedar accesibles como `https://www.daloweb.es/sitemap.xml` y `https://www.daloweb.es/robots.txt`. Enviar la URL del sitemap en Google Search Console y Bing Webmaster Tools.
+
+Para regenerarlos cuando cambien servicios o guías: `php scripts/generar-seo.php`. El generador utiliza `https://www.daloweb.es` por defecto y acepta otro dominio HTTPS como argumento. Los archivos físicos tienen prioridad sobre las rutas de Laravel: regenerarlos y subirlos tras añadir páginas o actualizar las fechas de las guías. Para verificar por etiquetas HTML, configurar `GOOGLE_SITE_VERIFICATION` y `BING_SITE_VERIFICATION` con los valores de cada herramienta y renovar la caché de configuración.
+
 Las páginas públicas integran Google Analytics 4 con `G-TT318T6SZZ` mediante [public/js/landing/cookies.js](public/js/landing/cookies.js). La etiqueta de Google solo se carga tras aceptar las cookies analíticas. El banner permite aceptar o rechazar con la misma presentación; el pie y `/cookies` permiten cambiar la decisión. La retirada desactiva la medición, elimina las cookies `_ga` accesibles y recarga la página. No se integra Analytics en el login ni en el panel de administración.
 
 La elección se conserva 180 días en `localStorage` (`daloweb_cookie_consent`), incluyendo versión y vencimiento. Incrementar `version` en el script cuando cambien las finalidades o proveedores que requieran renovar el consentimiento. Las cookies analíticas tienen un máximo de dos años desde su creación, sin renovación automática. Las señales de Google y la personalización publicitaria permanecen desactivadas. Los eventos personalizados existentes solo se envían después de aceptar, sin reenviar eventos anteriores ni incluir datos del formulario o el identificador interno de la solicitud.
