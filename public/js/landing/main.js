@@ -163,15 +163,20 @@
     var selectedPackName = document.getElementById('selectedPackName');
     var packButtons = document.querySelectorAll('[data-pack]');
     function updatePackSummary() {
-      var button = Array.prototype.find.call(packButtons, function (item) { return item.getAttribute('data-pack') === packInput.value; });
+      var button = Array.prototype.find.call(packButtons, function (item) { return item.closest('.price-card') && item.getAttribute('data-pack') === packInput.value; });
       selectedPack.hidden = !button;
       selectedPackName.textContent = button ? button.closest('.price-card').querySelector('.price-card__title').textContent : '';
     }
     Array.prototype.forEach.call(packButtons, function (button) {
-      button.addEventListener('click', function () {
+      button.addEventListener('click', function (event) {
         packInput.value = button.getAttribute('data-pack');
         contactForm.elements.tipo.value = button.getAttribute('data-tipo');
         updatePackSummary();
+        if (button.closest('.hero')) {
+          event.preventDefault();
+          contactForm.scrollIntoView({ behavior: reducedMotion.matches ? 'auto' : 'smooth', block: 'start' });
+          contactForm.elements.nombre.focus({ preventScroll: true });
+        }
       });
     });
     contactForm.elements.tipo.addEventListener('change', function () {

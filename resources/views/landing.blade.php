@@ -10,7 +10,7 @@
                         <p class="hero__subtitle" data-i18n="hero_subtitle">Diseño web profesional, apps móviles para iOS y Android, sistemas de
                             reservas online y software a medida. </p>
                         <div class="hero__buttons">
-                            <a href="#contacto" class="btn btn--primary btn--lg" data-i18n="hero_cta_primary">Quiero mi web</a>
+                            <a href="{{ route('inicio', ['pack' => 'web-profesional']) }}#contacto" class="btn btn--primary btn--lg" data-pack="web-profesional" data-tipo="web" data-i18n="hero_cta_primary">Quiero mi web</a>
                             <a href="#proyectos" class="btn btn--outline btn--lg" data-i18n="hero_cta_secondary">Ver proyectos</a>
                         </div>
                     </div>

@@ -59,13 +59,13 @@
     <meta name="twitter:image" content="{{ $baseUrl }}/img/proyectos/around-sevilla.png">
     <script type="application/ld+json">@json($schema)</script>
     <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
-    <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/comercial.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/landing.css') . '?v=' . filemtime(public_path('css/landing.css')) }}">
+    <link rel="stylesheet" href="{{ asset('css/comercial.css') . '?v=' . filemtime(public_path('css/comercial.css')) }}">
     @if($traducible)
-        <script src="{{ asset('js/landing/languages.js') }}" defer></script>
+        <script src="{{ asset('js/landing/languages.js') . '?v=' . filemtime(public_path('js/landing/languages.js')) }}" defer></script>
     @endif
-    <script src="{{ asset('js/landing/analytics.js') }}" defer></script>
-    <script src="{{ asset('js/landing/main.js') }}" defer></script>
+    <script src="{{ asset('js/landing/analytics.js') . '?v=' . filemtime(public_path('js/landing/analytics.js')) }}" defer></script>
+    <script src="{{ asset('js/landing/main.js') . '?v=' . filemtime(public_path('js/landing/main.js')) }}" defer></script>
 </head>
 <body class="{{ $esPortada ? 'pagina-inicio' : 'pagina-interior' }}" data-origen="{{ \App\Support\OrigenContacto::resolver(request()) }}">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>

@@ -15,12 +15,6 @@
 .hero-project figcaption strong { display: block; color: var(--color-text); }
 .section-action { display: inline-flex; margin-top: 1.5rem; }
 .service-link { display: inline-block; margin-top: 1rem; color: #a68bfa; font-weight: 600; }
-.pack-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1rem; }
-.pack-overview a { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); }
-.pack-overview strong { font-size: 1.5rem; }
-.pack-overview strong small { font-size: .8rem; font-weight: 400; }
-.pack-overview span { font-size: var(--fs-sm); }
-.pack-overview span:last-child { color: var(--color-text-soft); }
 .small-print { font-size: var(--fs-sm); color: var(--color-text-soft); line-height: 1.65; margin: 1rem 0 1.5rem; }
 .pricing__grid--web { grid-template-columns: 1fr; }
 .pricing__grid--web .price-card { padding: 1.5rem; }
@@ -32,6 +26,7 @@
 .custom-offers { display: grid; gap: 1rem; margin-top: 1.5rem; }
 .custom-project { padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius); }
 .custom-project p { color: var(--color-text-soft); margin: .75rem 0; font-size: var(--fs-sm); }
+.custom-project__scope { flex: 1; }
 .custom-project .btn { align-self: flex-start; margin-top: .5rem; }
 .custom-project .text-link { display: block; }
 .faq details { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
@@ -99,6 +94,4 @@
     .pagina-inicio .hero__title { font-size: 1.9rem; }
     .pagina-inicio .hero__buttons { margin-top: 1.25rem; }
     .hero-project figcaption { padding: .65rem .9rem; }
-    .pack-overview a { padding: .85rem; }
-    .pack-overview span:first-child { min-height: 2.8em; }
 }
