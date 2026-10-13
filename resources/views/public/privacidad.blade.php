@@ -29,7 +29,7 @@
         <p>Si consideras que tus derechos no han sido atendidos, puedes presentar una reclamación ante la <a href="https://www.aepd.es/derechos-y-deberes/conoce-tus-derechos">Agencia Española de Protección de Datos</a>.</p>
         <h2>7. Cookies, registros y medición</h2>
         <p>El sitio utiliza cookies técnicas de sesión y mecanismos de seguridad para mantener la sesión y proteger formularios. En la portada, la preferencia de idioma puede guardarse en el almacenamiento local del navegador. Puedes eliminarla desde sus ajustes.</p>
-        <p>Los eventos de interacción preparados por la web no incluyen el nombre, el correo ni el contenido del mensaje. Su integración con un proveedor de analítica debe documentarse antes de activarla. Proveedores, base jurídica y condiciones de medición, si se habilita: {{ config('legal.analitica') }}.</p>
+        <p>Los eventos de interacción enviados por la web no incluyen el nombre, el correo ni el contenido del mensaje. Analítica: {{ config('legal.analitica') }} Consulta la <a href="{{ route('cookies') }}">política de cookies</a> para conocer las cookies, sus plazos y cómo gestionar tu consentimiento.</p>
         <p>El servidor puede generar registros técnicos para operar y proteger el servicio. Datos registrados, acceso y conservación: {{ config('legal.registros') }}. Decisiones automatizadas o elaboración de perfiles, si procede: {{ config('legal.decisiones') }}.</p>
         <h2>8. Seguridad y cambios</h2>
         <p>El acceso a la gestión de oportunidades requiere autenticación y permisos de administrador. Las condiciones de tratamiento deben revisarse cuando cambien los servicios o proveedores.</p>

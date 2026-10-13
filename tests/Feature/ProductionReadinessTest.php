@@ -53,6 +53,26 @@ class ProductionReadinessTest extends TestCase
         $this->get('/admin')->assertRedirect('/login');
     }
 
+    public function test_public_pages_offer_cookie_consent_and_the_policy_without_loading_google(): void
+    {
+        foreach (['/', '/precios', '/proyectos', '/privacidad', '/cookies'] as $path) {
+            $response = $this->get($path)->assertOk()
+                ->assertSee('id="cookieBanner"', false)
+                ->assertSee('data-cookie-choice="accepted"', false)
+                ->assertSee('data-cookie-choice="rejected"', false)
+                ->assertSee('Cambiar cookies')
+                ->assertSee(route('cookies'))
+                ->assertDontSee('src="https://www.googletagmanager.com', false);
+            $this->assertLessThan(
+                strpos($response->getContent(), 'js/landing/analytics.js'),
+                strpos($response->getContent(), 'js/landing/cookies.js')
+            );
+        }
+        $this->get('/cookies')->assertSee('Política de cookies')->assertSee('G-TT318T6SZZ')
+            ->assertSee('180 días')->assertSee(config('session.cookie'));
+        $this->get('/login')->assertDontSee('js/landing/cookies.js', false);
+    }
+
     public function test_contact_sends_mail_and_displays_server_confirmation(): void
     {
         Mail::fake();

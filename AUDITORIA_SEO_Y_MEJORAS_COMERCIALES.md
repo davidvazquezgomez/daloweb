@@ -6,7 +6,7 @@ Prioridad P0 → P3. Despliegue anterior confirmado; ajustes de esta revisión p
 
 - [ ] **P0 · L01** Completar `XXXXXXX` en `config/legal.php` y validar textos legales preparados.
 - [ ] **P0 · C02** Validar costes reales, impuestos, hosting y renovaciones; decidir precios con la calculadora preparada.
-- [ ] **P0 · O01** Confirmar recepción en bandeja de los dos correos de prueba enviados a `hola@daloweb.es`.
+- [ ] **P0 · O01c** Revisar cuenta, filtros o sincronización del cliente del usuario: ambos correos están en INBOX del servidor.
 - [ ] **P1 · C03** Acordar alcance, revisiones, exclusiones y soporte de cada pack usando la ficha preparada.
 - [ ] **P1 · T01** Dos casos con resultados verificables, equipo y opiniones con fuente.
 - [ ] **P1 · A01** Elegir/conectar analítica, confirmar migración y acordar privacidad/conservación antes de activar captura.
@@ -25,6 +25,6 @@ Prioridad P0 → P3. Despliegue anterior confirmado; ajustes de esta revisión p
 - [x] **C02a** Calculadora privada de costes, margen y precio mínimo en Admin → Rentabilidad.
 - [x] **C03b, C06a** [Ficha de alcance, presupuesto y mantenimiento](PLANTILLA_PRESUPUESTO_Y_MANTENIMIENTO.md) preparada.
 - [x] **C04b, D01a** Solicitudes coherentes con el servicio elegido; despliegue anterior revisado en móvil/escritorio y CSS/JS versionados para próximos cambios.
-- [x] **L01a, V09, O01b** Legal y privacidad con marcadores, footer uniforme; SMTP real aceptado y formulario público con envío confirmado.
+- [x] **L01a, V09, O01b** Legal/privacidad y footer uniforme; pruebas SMTP/formulario entregadas en INBOX y verificadas por IMAP, sin marca de spam.
 
 Verificación: **33 pruebas / 270 aserciones**; legal y footer en tres anchos. [Capturas y pruebas de correo](docs/auditoria-visual/septima-fase/). Nuevas páginas pendientes de publicar; precios y activación de captura pendientes de confirmar.

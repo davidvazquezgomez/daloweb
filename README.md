@@ -220,6 +220,16 @@ Todos los derechos reservados © DaloWeb 2026.
 - Stack tecnológico actualizado
 
 
+## Google Analytics y cookies
+
+Las páginas públicas integran Google Analytics 4 con `G-TT318T6SZZ` mediante [public/js/landing/cookies.js](public/js/landing/cookies.js). La etiqueta de Google solo se carga tras aceptar las cookies analíticas. El banner permite aceptar o rechazar con la misma presentación; el pie y `/cookies` permiten cambiar la decisión. La retirada desactiva la medición, elimina las cookies `_ga` accesibles y recarga la página. No se integra Analytics en el login ni en el panel de administración.
+
+La elección se conserva 180 días en `localStorage` (`daloweb_cookie_consent`), incluyendo versión y vencimiento. Incrementar `version` en el script cuando cambien las finalidades o proveedores que requieran renovar el consentimiento. Las cookies analíticas tienen un máximo de dos años desde su creación, sin renovación automática. Las señales de Google y la personalización publicitaria permanecen desactivadas. Los eventos personalizados existentes solo se envían después de aceptar, sin reenviar eventos anteriores ni incluir datos del formulario o el identificador interno de la solicitud.
+
+La política está en [resources/views/public/cookies.blade.php](resources/views/public/cookies.blade.php). Completar los datos del titular en `config/legal.php`, revisar las condiciones y garantías del proveedor y comprobar en la propiedad de GA4 los ajustes de conservación y medición mejorada (especialmente formularios y cambios de URL). Estos ajustes externos no se modifican desde el repositorio. Tras desplegar cambios de configuración, ejecutar `php artisan config:cache` y, si se precachean vistas, `php artisan view:cache`.
+
+Validación: `node --test tests/cookie-consent.test.mjs` y `vendor/bin/phpunit tests/Feature/ProductionReadinessTest.php`. Para comprobar la recepción real tras desplegar, usar Tag Assistant o el informe en tiempo real de GA4, aceptando previamente las cookies.
+
 ## Seguimiento de oportunidades
 
 Páginas `/aviso-legal` y `/privacidad`: completar los valores `XXXXXXX` en [config/legal.php](config/legal.php) y revisar los textos en `resources/views/public/aviso-legal.blade.php` y `privacidad.blade.php`. Para apartados que no apliquen, indicar expresamente «No aplica» tras comprobarlo. Los textos incluyen los datos informativos descritos por el [artículo 10 de la LSSI](https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758#a10) y la estructura de información de la [AEPD](https://www.aepd.es/derechos-y-deberes/conoce-tus-derechos/derecho-de-informacion). Mientras quede algún marcador, las páginas llevan `noindex, follow`. Tras editar la configuración en producción, renovar la caché con `php artisan config:cache`.

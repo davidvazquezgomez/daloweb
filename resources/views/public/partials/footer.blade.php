@@ -15,6 +15,8 @@
                         <li><a href="{{ ($esPortada ?? false) ? '#contacto' : route('inicio') . '#contacto' }}" data-i18n="nav_contact">Contacto</a></li>
                         <li><a href="{{ route('aviso-legal') }}" data-i18n="footer_legal">Aviso legal</a></li>
                         <li><a href="{{ route('privacidad') }}" data-i18n="footer_privacy">Política de privacidad</a></li>
+                        <li><a href="{{ route('cookies') }}">Política de cookies</a></li>
+                        <li><button type="button" class="cookie-settings" data-cookie-settings hidden>Cambiar cookies</button></li>
                         <li><a href="{{ route('login') }}" data-i18n="footer_admin">Administración</a></li>
                     </ul>
                 </nav>

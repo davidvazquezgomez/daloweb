@@ -17,7 +17,7 @@ return [
     'delegado' => 'XXXXXXX',
     'bases_consultas' => 'XXXXXXX',
     'destinatarios' => 'XXXXXXX',
-    'analitica' => 'XXXXXXX',
+    'analitica' => 'Google Analytics 4 (Google Ireland Limited), únicamente con consentimiento previo para medir el uso de la web. Puedes rechazarlo o retirar tu consentimiento desde «Cambiar cookies». Consulta la política de cookies para más información.',
     'registros' => 'XXXXXXX',
     'decisiones' => 'XXXXXXX',
 ];

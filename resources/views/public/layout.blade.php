@@ -65,6 +65,7 @@
     @if($traducible)
         <script src="{{ asset('js/landing/languages.js') . '?v=' . filemtime(public_path('js/landing/languages.js')) }}" defer></script>
     @endif
+    <script src="{{ asset('js/landing/cookies.js') . '?v=' . filemtime(public_path('js/landing/cookies.js')) }}" defer></script>
     <script src="{{ asset('js/landing/analytics.js') . '?v=' . filemtime(public_path('js/landing/analytics.js')) }}" defer></script>
     <script src="{{ asset('js/landing/main.js') . '?v=' . filemtime(public_path('js/landing/main.js')) }}" defer></script>
 </head>
@@ -84,6 +85,7 @@
         @yield('contenido')
     </main>
     @include('public.partials.footer')
+    @include('public.partials.cookies')
     @if(session('contact_event'))
         <script type="application/json" id="contactEvent">@json(session('contact_event'))</script>
     @elseif($errors->any())

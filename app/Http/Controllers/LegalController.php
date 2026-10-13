@@ -14,6 +14,11 @@ class LegalController extends Controller
         return $this->pagina('privacidad', 'Política de privacidad', 'Información sobre los datos tratados al contactar con DaloWeb, sus finalidades y tus derechos.');
     }
 
+    public function cookies()
+    {
+        return $this->pagina('cookies', 'Política de cookies', 'Información sobre las cookies de DaloWeb, Google Analytics y cómo aceptar, rechazar o retirar tu consentimiento.');
+    }
+
     private function pagina(string $slug, string $titulo, string $descripcion)
     {
         return view('public.' . $slug, [
