@@ -1,4 +1,10 @@
 /* Páginas comerciales y portada compacta. */
+.footer__links li, .footer__links a { font-size: var(--fs-sm); font-weight: 400; color: var(--color-text-soft); line-height: 1.6; }
+.legal-page h2 { font-size: clamp(1.3rem, 3vw, 1.65rem); margin: 2rem 0 1rem; }
+.legal-page p, .legal-data { color: var(--color-text-soft); line-height: 1.8; margin-bottom: 1rem; }
+.legal-page a { color: #a68bfa; text-decoration: underline; text-underline-offset: .2em; }
+.legal-data dt { font-weight: 600; color: var(--color-text); margin-top: 1rem; }
+.legal-data dd { margin: 0; overflow-wrap: anywhere; }
 .skip-link { position: fixed; top: -100px; left: 20px; z-index: 1100; background: #fff; color: #0f0f1a; padding: .75rem 1rem; }
 .skip-link:focus { top: 12px; }
 .pagina-inicio .hero { min-height: 0; }

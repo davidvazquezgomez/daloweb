@@ -222,6 +222,8 @@ Todos los derechos reservados © DaloWeb 2026.
 
 ## Seguimiento de oportunidades
 
+Páginas `/aviso-legal` y `/privacidad`: completar los valores `XXXXXXX` en [config/legal.php](config/legal.php) y revisar los textos en `resources/views/public/aviso-legal.blade.php` y `privacidad.blade.php`. Para apartados que no apliquen, indicar expresamente «No aplica» tras comprobarlo. Los textos incluyen los datos informativos descritos por el [artículo 10 de la LSSI](https://www.boe.es/buscar/act.php?id=BOE-A-2002-13758#a10) y la estructura de información de la [AEPD](https://www.aepd.es/derechos-y-deberes/conoce-tus-derechos/derecho-de-informacion). Mientras quede algún marcador, las páginas llevan `noindex, follow`. Tras editar la configuración en producción, renovar la caché con `php artisan config:cache`.
+
 Herramientas comerciales: `/admin/rentabilidad` calcula costes, precio mínimo y contribución antes de impuestos, sin guardar simulaciones ni modificar la oferta pública. Requiere administrador y funciona sin JavaScript ni tablas nuevas. Completar costes reales; no presupone márgenes ni impuestos. Para acordar alcance y recurrencia, usar [la ficha de presupuesto y mantenimiento](PLANTILLA_PRESUPUESTO_Y_MANTENIMIENTO.md).
 
 Panel protegido en `/admin/oportunidades`: estados, origen, presupuesto, venta, coste y notas. La contribución excluye ventas sin coste registrado. Incluye eliminación individual de los datos.

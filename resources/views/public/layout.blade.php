@@ -45,6 +45,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ $seo['title'] }}</title>
     <meta name="description" content="{{ $seo['descripcion'] }}">
+    @if($seo['noindex'] ?? false)<meta name="robots" content="noindex, follow">@endif
     <link rel="canonical" href="{{ $canonical }}">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="DaloWeb">

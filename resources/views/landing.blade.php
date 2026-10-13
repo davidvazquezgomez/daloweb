@@ -249,6 +249,7 @@
                             @error('mensaje') <p class="contact-form__error" id="mensaje-error" role="alert">{{ $message }}</p> @enderror
                         </div>
                         <div class="contact-form__group contact-form__group--full">
+                            <p class="small-print"><span data-i18n="privacy_responsible">Responsable:</span> {{ config('legal.titular') }} (DaloWeb). <span data-i18n="privacy_form_summary">Usamos los datos para atender tu consulta y preparar la propuesta solicitada. Puedes consultar las bases, conservación y derechos en la</span> <a href="{{ route('privacidad') }}" data-i18n="footer_privacy">Política de privacidad</a>.</p>
                             <button type="submit" class="btn btn--primary btn--lg btn--full" data-i18n="form_submit">Enviar mensaje</button>
                         </div>
                         <div class="contact-form__feedback" id="formFeedback" aria-live="polite">

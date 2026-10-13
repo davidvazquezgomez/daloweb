@@ -13,8 +13,8 @@
                         <li><a href="{{ route('precios') }}" data-i18n="nav_pricing">Precios</a></li>
                         <li><a href="{{ route('guias') }}" data-i18n="nav_guides">Guías</a></li>
                         <li><a href="{{ ($esPortada ?? false) ? '#contacto' : route('inicio') . '#contacto' }}" data-i18n="nav_contact">Contacto</a></li>
-                        <li><span data-i18n="footer_legal">Aviso legal</span></li>
-                        <li><span data-i18n="footer_privacy">Política de privacidad</span></li>
+                        <li><a href="{{ route('aviso-legal') }}" data-i18n="footer_legal">Aviso legal</a></li>
+                        <li><a href="{{ route('privacidad') }}" data-i18n="footer_privacy">Política de privacidad</a></li>
                         <li><a href="{{ route('login') }}" data-i18n="footer_admin">Administración</a></li>
                     </ul>
                 </nav>

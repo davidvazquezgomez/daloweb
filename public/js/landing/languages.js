@@ -5,6 +5,8 @@
 // 1. Global data (Immediate)
 window.translations = {
   es: {
+    privacy_responsible: 'Responsable:',
+    privacy_form_summary: 'Usamos los datos para atender tu consulta y preparar la propuesta solicitada. Puedes consultar las bases, conservación y derechos en la',
     nav_guides: 'Guías',
     hero_project_caption: "Un proyecto de diseño web para visitas turísticas.",
     service_details: "Ver servicio →",
@@ -80,6 +82,8 @@ window.translations = {
     form_error: 'Por favor, rellena todos los campos correctamente.', form_success: '¡Mensaje enviado! Te contactaremos pronto.',
   },
   en: {
+    privacy_responsible: 'Data controller:',
+    privacy_form_summary: 'We use your details to answer your enquiry and prepare the requested proposal. Read about legal bases, retention and your rights in the',
     nav_guides: 'Guides',
     hero_project_caption: "A website project for a sightseeing business.",
     service_details: "View service →",

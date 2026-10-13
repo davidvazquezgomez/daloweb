@@ -21,6 +21,8 @@ foreach (array_keys(config('servicios')) as $slug) {
 }
 Route::get('/precios', [InicioController::class, 'precios'])->name('precios');
 Route::get('/proyectos', [InicioController::class, 'proyectos'])->name('proyectos');
+Route::get('/aviso-legal', [\App\Http\Controllers\LegalController::class, 'aviso'])->name('aviso-legal');
+Route::get('/privacidad', [\App\Http\Controllers\LegalController::class, 'privacidad'])->name('privacidad');
 Route::get('/guias', [GuiaController::class, 'index'])->name('guias');
 Route::get('/guias/{slug}', [GuiaController::class, 'mostrar'])->where('slug', '[a-z0-9-]+')->name('guia');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->middleware('throttle:5,1')->name('contacto');
