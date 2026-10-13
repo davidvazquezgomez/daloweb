@@ -5,8 +5,8 @@
         <a href="{{ route('cookies') }}">Leer la política de cookies</a>
     </div>
     <div class="cookie-banner__actions">
-        <button type="button" class="cookie-choice" data-cookie-choice="accepted">Aceptar analíticas</button>
-        <button type="button" class="cookie-choice" data-cookie-choice="rejected">Rechazar analíticas</button>
+        <button type="button" class="cookie-choice" data-cookie-choice="accepted">Aceptar cookies</button>
+        <button type="button" class="cookie-choice" data-cookie-choice="rejected">Rechazar cookies</button>
     </div>
 </section>
 <noscript><p class="container small-print">Google Analytics está desactivado porque JavaScript no está disponible. Consulta la <a href="{{ route('cookies') }}">política de cookies</a>.</p></noscript>
