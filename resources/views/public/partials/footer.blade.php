@@ -11,6 +11,7 @@
                         <li><a href="{{ route('proyectos') }}" data-i18n="nav_projects">Proyectos</a></li>
                         <li><a href="{{ ($esPortada ?? false) ? '#nosotros' : route('inicio') . '#nosotros' }}" data-i18n="nav_about">Sobre nosotros</a></li>
                         <li><a href="{{ route('precios') }}" data-i18n="nav_pricing">Precios</a></li>
+                        <li><a href="{{ route('guias') }}" data-i18n="nav_guides">Guías</a></li>
                         <li><a href="{{ ($esPortada ?? false) ? '#contacto' : route('inicio') . '#contacto' }}" data-i18n="nav_contact">Contacto</a></li>
                         <li><span data-i18n="footer_legal">Aviso legal</span></li>
                         <li><span data-i18n="footer_privacy">Política de privacidad</span></li>

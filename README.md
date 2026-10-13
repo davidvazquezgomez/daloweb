@@ -218,3 +218,26 @@ Todos los derechos reservados © DaloWeb 2026.
 - Banner NEW para sistema de reservas
 - Ajuste de precios: plan 200€ reducido a 3 páginas (header, contacto y footer incluidos)
 - Stack tecnológico actualizado
+
+
+## Seguimiento de oportunidades
+
+Panel protegido en `/admin/oportunidades`: estados, origen, presupuesto, venta, coste y notas. La contribución excluye ventas sin coste registrado. Incluye eliminación individual de los datos.
+
+La captura automática está desactivada por defecto. Para preparar la tabla en el despliegue:
+
+```bash
+php artisan migrate --path=database/migrations/2026_10_13_000001_create_leads_table.php
+```
+
+En producción, Laravel puede requerir `--force` en el proceso de despliegue. No se ha aplicado esta migración a la base real durante la implementación.
+
+Cuando estén acordadas privacidad y conservación, configurar `LEADS_CAPTURE_ENABLED=true` y renovar la caché de configuración. Con la captura desactivada, el contacto sigue enviando correo sin guardar solicitudes en esta tabla. Con la captura activada, se registra la solicitud antes del envío y se distingue correo pendiente, enviado o fallido. Un fallo del correo conserva la oportunidad para gestionarla en el panel.
+
+El origen guarda categorías (directo, orgánico, publicidad, redes, email, referido u otro), sin campañas, consultas, direcciones IP ni URLs de procedencia. La atribución por navegación interna requiere JavaScript; en una entrada directa, el formulario también recibe el origen calculado por el servidor.
+
+Pruebas de la web y del seguimiento, con SQLite en memoria y correo simulado:
+
+```bash
+vendor/bin/phpunit --bootstrap vendor/autoload.php tests/Feature
+```

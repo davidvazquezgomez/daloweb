@@ -17,12 +17,24 @@
         ]],
     ];
     if (isset($breadcrumb)) {
+        $breadcrumbs = $breadcrumbs ?? [
+            ['name' => 'Inicio', 'path' => '/'],
+            ['name' => $breadcrumb, 'path' => $seo['path']],
+        ];
         $schema['@graph'][] = [
             '@type' => 'BreadcrumbList',
-            'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Inicio', 'item' => $baseUrl . '/'],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => $breadcrumb, 'item' => $canonical],
-            ],
+            'itemListElement' => array_map(fn ($item, $index) => [
+                '@type' => 'ListItem', 'position' => $index + 1, 'name' => $item['name'], 'item' => $baseUrl . $item['path'],
+            ], $breadcrumbs, array_keys($breadcrumbs)),
+        ];
+    }
+    if (isset($guia)) {
+        $schema['@graph'][] = [
+            '@type' => 'Article', 'headline' => $guia['h1'], 'description' => $guia['descripcion'],
+            'mainEntityOfPage' => $canonical, 'inLanguage' => 'es',
+            'dateModified' => $guia['actualizado'],
+            'author' => ['@type' => 'Organization', 'name' => 'DaloWeb', 'url' => $baseUrl . '/'],
+            'publisher' => ['@id' => $baseUrl . '/#organizacion'],
         ];
     }
 @endphp
@@ -52,19 +64,30 @@
     @if($traducible)
         <script src="{{ asset('js/landing/languages.js') }}" defer></script>
     @endif
+    <script src="{{ asset('js/landing/analytics.js') }}" defer></script>
     <script src="{{ asset('js/landing/main.js') }}" defer></script>
 </head>
-<body class="{{ $esPortada ? 'pagina-inicio' : 'pagina-interior' }}">
+<body class="{{ $esPortada ? 'pagina-inicio' : 'pagina-interior' }}" data-origen="{{ \App\Support\OrigenContacto::resolver(request()) }}">
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
     @include('public.partials.header')
     <main id="contenido" tabindex="-1">
         @if(isset($breadcrumb))
             <nav class="container breadcrumbs" aria-label="Ruta de navegación">
-                <a href="{{ route('inicio') }}">Inicio</a><span aria-hidden="true">/</span><span aria-current="page">{{ $breadcrumb }}</span>
+                @foreach($breadcrumbs as $item)
+                    @if(!$loop->first)<span aria-hidden="true">/</span>@endif
+                    @if($loop->last)<span aria-current="page">{{ $item['name'] }}</span>
+                    @else<a href="{{ url($item['path']) }}">{{ $item['name'] }}</a>@endif
+                @endforeach
             </nav>
         @endif
         @yield('contenido')
     </main>
     @include('public.partials.footer')
+    @if(session('contact_event'))
+        <script type="application/json" id="contactEvent">@json(session('contact_event'))</script>
+    @elseif($errors->any())
+        @php($validationEvent = ['event' => 'lead_submit_error', 'reason' => 'validation'])
+        <script type="application/json" id="contactEvent">@json($validationEvent)</script>
+    @endif
 </body>
 </html>

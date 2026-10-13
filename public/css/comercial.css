@@ -9,6 +9,8 @@
 .hero__visual { min-height: 0; align-items: center; }
 .hero-project { width: 100%; max-width: 520px; margin: 0; border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; background: var(--color-surface); }
 .hero-project img { width: 100%; height: auto; aspect-ratio: 703 / 360; object-fit: cover; }
+.hero-project picture { display: block; }
+.preview-frame__img picture { display: block; width: 100%; height: 100%; }
 .hero-project figcaption { padding: .9rem 1rem; font-size: var(--fs-sm); color: var(--color-text-soft); }
 .hero-project figcaption strong { display: block; color: var(--color-text); }
 .section-action { display: inline-flex; margin-top: 1.5rem; }
@@ -66,6 +68,22 @@
 .pagina-interior .projects__grid { margin-top: 2rem; }
 .pagina-interior .hero__visual { display: none; }
 .pagina-inicio .process__timeline { grid-template-columns: 1fr; }
+.guide-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.5rem; }
+.guide-card, .guide-contents, .guide-next-step, .guide-price-reference { padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+.guide-card h2 { font-size: 1.3rem; line-height: 1.4; }
+.guide-card p { margin-top: 1rem; color: var(--color-text-soft); }
+.guide-byline { margin-top: 1rem; font-size: var(--fs-sm); color: var(--color-text-soft); }
+.guide-contents { margin-bottom: 2.5rem; }
+.guide-contents ol { padding-left: 1.4rem; margin-top: .75rem; }
+.guide-contents li + li { margin-top: .5rem; }
+.guide-contents a, .guide-related a { color: #a68bfa; }
+.guide-article section { margin: 2.5rem 0; }
+.guide-article h2 { margin-bottom: 1rem; font-size: clamp(1.4rem, 3vw, 1.85rem); line-height: 1.3; }
+.guide-article section p, .guide-next-step p { color: var(--color-text-soft); margin-bottom: 1rem; }
+.guide-price-reference dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding: .75rem 0; border-bottom: 1px solid var(--color-border); }
+.guide-price-reference dd { margin: 0; font-weight: 600; }
+.guide-next-step { margin: 2.5rem 0; }
+.guide-related a { display: block; }
 @media (min-width: 600px) {
     .pricing__grid--web, .custom-offers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .pagina-inicio .process__timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }

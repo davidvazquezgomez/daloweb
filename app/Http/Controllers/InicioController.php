@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Support\OrigenContacto;
 
 class InicioController extends Controller
 {
@@ -14,6 +15,7 @@ class InicioController extends Controller
         return view('landing', [
             'packPredeterminado' => is_string($pack) && isset(config('comercial.packs')[$pack]) ? $pack : '',
             'tipoPredeterminado' => is_string($tipo) && in_array($tipo, ['web', 'reservas', 'app', 'medida'], true) ? $tipo : '',
+            'origenContacto' => OrigenContacto::resolver($request),
         ]);
     }
 
@@ -47,7 +49,11 @@ class InicioController extends Controller
 
     public function sitemap()
     {
-        $paths = array_merge(['/'], array_map(fn ($slug) => '/' . $slug, array_keys(config('servicios'))), ['/precios', '/proyectos']);
+        $paths = array_merge(
+            ['/'], array_map(fn ($slug) => '/' . $slug, array_keys(config('servicios'))),
+            ['/precios', '/proyectos', '/guias'],
+            array_map(fn ($slug) => '/guias/' . $slug, array_keys(config('guias'))),
+        );
 
         return response()->view('sitemap', [
             'urls' => array_map(fn ($path) => rtrim(config('app.url'), '/') . $path, $paths),

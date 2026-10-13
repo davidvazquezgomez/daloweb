@@ -8,6 +8,7 @@
                             <li><a href="{{ ($esPortada ?? false) ? '#servicios' : route('inicio') . '#servicios' }}" class="nav__link" data-i18n="nav_services">Servicios</a></li>
                             <li><a href="{{ ($esPortada ?? false) ? '#proyectos' : route('inicio') . '#proyectos' }}" class="nav__link" data-i18n="nav_projects">Proyectos</a></li>
                             <li><a href="{{ route('precios') }}" class="nav__link" data-i18n="nav_pricing">Precios</a></li>
+                            <li><a href="{{ route('guias') }}" class="nav__link" data-i18n="nav_guides">Guías</a></li>
                             <li><a href="{{ ($esPortada ?? false) ? '#nosotros' : route('inicio') . '#nosotros' }}" class="nav__link" data-i18n="nav_about">Sobre nosotros</a></li>
                         </ul>
                         <a href="{{ ($esPortada ?? false) ? '#contacto' : route('inicio') . '#contacto' }}" class="btn btn--primary nav__cta-mobile" data-i18n="cta_button">Pide tu presupuesto</a>

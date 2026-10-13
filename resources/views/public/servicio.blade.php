@@ -7,7 +7,7 @@
             <p class="eyebrow">{{ $servicio['nombre'] }}</p>
             <h1>{{ $servicio['h1'] }}</h1>
             <p class="lead">{{ $servicio['intro'] }}</p>
-            <a class="btn btn--primary btn--lg" href="{{ route('inicio', $servicio['pack'] ? ['pack' => $servicio['pack']] : ['tipo' => $servicio['tipo']]) }}#contacto">Cuéntanos qué necesitas</a>
+            <a class="btn btn--primary btn--lg" data-tipo="{{ $servicio['tipo'] }}" @if($servicio['pack']) data-pack="{{ $servicio['pack'] }}" @endif href="{{ route('inicio', $servicio['pack'] ? ['pack' => $servicio['pack']] : ['tipo' => $servicio['tipo']]) }}#contacto">Cuéntanos qué necesitas</a>
         </div>
         <aside class="service-summary" aria-label="Resumen del servicio">
             <h2>¿Para quién es?</h2>

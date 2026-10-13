@@ -8,5 +8,6 @@
                 @endif
             @endforeach
         </div>
+        <a class="text-link" href="{{ route('guias') }}">Guías para preparar tu proyecto →</a>
     </div>
 </section>

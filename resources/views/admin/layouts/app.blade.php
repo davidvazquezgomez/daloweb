@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="robots" content="noindex">
     <title>@yield('titulo', 'Panel') — DaloWeb Admin</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
@@ -34,6 +35,10 @@
                         <path d="M9 21V9" />
                     </svg>
                     Tareas
+                </a>
+                <a href="{{ route('admin.leads') }}" class="sidebar__link {{ request()->routeIs('admin.leads*') ? 'sidebar__link--active' : '' }}">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 5h18v14H3z"/><path d="m3 5 9 7 9-7"/></svg>
+                    Oportunidades
                 </a>
                 <a href="{{ route('admin.usuarios') }}" class="sidebar__link {{ request()->routeIs('admin.usuarios*') ? 'sidebar__link--active' : '' }}">
                     <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">

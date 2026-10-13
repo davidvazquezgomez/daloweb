@@ -3,10 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\ContactoController;
+use App\Http\Controllers\GuiaController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\PanelController;
 use App\Http\Controllers\Admin\TareaController;
 use App\Http\Controllers\Admin\UsuarioController;
+use App\Http\Controllers\Admin\LeadController;
 
 use App\Http\Controllers\Admin\FacturacionController;
 use App\Http\Controllers\Admin\DemoController;
@@ -19,6 +21,8 @@ foreach (array_keys(config('servicios')) as $slug) {
 }
 Route::get('/precios', [InicioController::class, 'precios'])->name('precios');
 Route::get('/proyectos', [InicioController::class, 'proyectos'])->name('proyectos');
+Route::get('/guias', [GuiaController::class, 'index'])->name('guias');
+Route::get('/guias/{slug}', [GuiaController::class, 'mostrar'])->where('slug', '[a-z0-9-]+')->name('guia');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->middleware('throttle:5,1')->name('contacto');
 
 // --- Auth ---
@@ -34,6 +38,11 @@ Route::prefix('admin')
     ->name('admin.')
     ->group(function () {
         Route::get('/', [PanelController::class, 'index'])->name('panel');
+
+        Route::get('/oportunidades', [LeadController::class, 'index'])->name('leads');
+        Route::get('/oportunidades/{lead}', [LeadController::class, 'show'])->name('leads.show');
+        Route::put('/oportunidades/{lead}', [LeadController::class, 'update'])->name('leads.update');
+        Route::delete('/oportunidades/{lead}', [LeadController::class, 'destroy'])->name('leads.destroy');
 
         // Tareas (Kanban)
         Route::get('/tareas', [TareaController::class, 'index'])->name('tareas');

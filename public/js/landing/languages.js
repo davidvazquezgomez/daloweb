@@ -5,6 +5,7 @@
 // 1. Global data (Immediate)
 window.translations = {
   es: {
+    nav_guides: 'Guías',
     hero_project_caption: "Un proyecto de diseño web para visitas turísticas.",
     service_details: "Ver servicio →",
     projects_all: "Ver todos los proyectos",
@@ -79,6 +80,7 @@ window.translations = {
     form_error: 'Por favor, rellena todos los campos correctamente.', form_success: '¡Mensaje enviado! Te contactaremos pronto.',
   },
   en: {
+    nav_guides: 'Guides',
     hero_project_caption: "A website project for a sightseeing business.",
     service_details: "View service →",
     projects_all: "See all projects",

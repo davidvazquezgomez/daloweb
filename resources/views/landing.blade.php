@@ -18,7 +18,10 @@
                     <div class="hero__visual">
                         <figure class="hero-project">
                             <a href="{{ route('proyectos') }}">
-                                <img src="{{ asset('img/proyectos/around-sevilla.png') }}" alt="Web de Around Sevilla Tours, un proyecto de DaloWeb" width="703" height="360" fetchpriority="high">
+                                @include('public.partials.imagen', [
+                                    'archivo' => 'around-sevilla.png', 'alt' => 'Web de Around Sevilla Tours, un proyecto de DaloWeb',
+                                    'prioritaria' => true, 'sizes' => '(min-width: 600px) 520px, calc(100vw - 40px)',
+                                ])
                             </a>
                             <figcaption><strong>Around Sevilla Tours</strong><span data-i18n="hero_project_caption">Un proyecto de diseño web para visitas turísticas.</span></figcaption>
                         </figure>
@@ -210,8 +213,11 @@
                             $packSolicitado = old('pack', $packPredeterminado ?? '');
                             $packAnterior = is_string($packSolicitado) ? $packSolicitado : '';
                             $packElegido = config('comercial.packs')[$packAnterior] ?? null;
+                            $origenAnterior = old('origen');
+                            $origenElegido = is_string($origenAnterior) && array_key_exists($origenAnterior, config('leads.origenes')) ? $origenAnterior : $origenContacto;
                         @endphp
                         <input type="hidden" id="pack" name="pack" value="{{ $packElegido ? $packAnterior : '' }}">
+                        <input type="hidden" name="origen" value="{{ $origenElegido }}">
                         <div class="contact-form__group contact-form__group--full" id="selectedPack" @if(!$packElegido) hidden @endif>
                             <p><span data-i18n="form_selected_pack">Pack elegido:</span> <strong id="selectedPackName">{{ $packElegido['nombre'] ?? '' }}</strong></p>
                         </div>

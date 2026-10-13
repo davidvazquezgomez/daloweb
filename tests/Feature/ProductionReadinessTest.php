@@ -114,7 +114,7 @@ class ProductionReadinessTest extends TestCase
             ->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
         $xml = simplexml_load_string($response->getContent());
         $this->assertNotFalse($xml);
-        $this->assertCount(7, $xml->url);
+        $this->assertCount(11, $xml->url);
         $this->assertSame('https://www.daloweb.es/', (string) $xml->url[0]->loc);
         foreach ($xml->url as $url) {
             $path = parse_url((string) $url->loc, PHP_URL_PATH);
@@ -161,6 +161,52 @@ class ProductionReadinessTest extends TestCase
         $this->get('/proyectos')->assertOk()->assertSee('Budgetix')->assertSee('Fuerza Neta');
         $this->get('/precios')->assertOk()->assertSee('200 €')->assertSee('600 €')->assertSee('800 €')
             ->assertSee('Impuestos')->assertSee('mantenimiento continuado');
+    }
+
+    public function test_guides_have_article_metadata_and_three_level_breadcrumbs(): void
+    {
+        config(['app.url' => 'https://www.daloweb.es']);
+        $this->get('/guias')->assertOk()->assertSee('Guías para preparar tu proyecto');
+        foreach (config('guias') as $slug => $guia) {
+            $response = $this->get('/guias/' . $slug)->assertOk()->assertSee($guia['h1']);
+            preg_match('/<script type="application\/ld\+json">(.*?)<\/script>/s', $response->getContent(), $json);
+            $schema = json_decode($json[1], true, 512, JSON_THROW_ON_ERROR);
+            $this->assertCount(3, $schema['@graph'][1]['itemListElement']);
+            $this->assertSame('https://www.daloweb.es/guias', $schema['@graph'][1]['itemListElement'][1]['item']);
+            $this->assertSame('Article', $schema['@graph'][2]['@type']);
+            $this->assertSame($guia['actualizado'], $schema['@graph'][2]['dateModified']);
+        }
+        $this->get('/guias/no-existe')->assertNotFound();
+    }
+
+    public function test_confirmed_contact_event_contains_no_personal_fields_and_is_flushed(): void
+    {
+        Mail::fake();
+        config(['mail.default' => 'smtp', 'mail.mailers.smtp.host' => 'smtp.example.test']);
+        $this->post('/contacto', $this->contactData() + ['pack' => 'web-profesional'])
+            ->assertSessionHas('contact_event', function ($event) {
+                return $event['event'] === 'lead_submit_success'
+                    && $event['pack'] === 'web-profesional'
+                    && array_keys($event) === ['event', 'service', 'pack', 'id', 'origin']
+                    && $event['origin'] === 'directo';
+            });
+        $response = $this->get('/')->assertSee('id="contactEvent"', false);
+        preg_match('/<script type="application\/json" id="contactEvent">(.*?)<\/script>/s', $response->getContent(), $json);
+        $payload = json_decode($json[1], true, 512, JSON_THROW_ON_ERROR);
+        $this->assertSame('lead_submit_success', $payload['event']);
+        $this->assertStringNotContainsString('cliente@example.test', $json[1]);
+        $this->assertStringNotContainsString('Necesito una página web', $json[1]);
+        $this->get('/')->assertDontSee('id="contactEvent"', false);
+    }
+
+    public function test_failed_delivery_emits_error_event_instead_of_conversion(): void
+    {
+        Mail::fake();
+        config(['mail.default' => 'log']);
+        $this->post('/contacto', $this->contactData())
+            ->assertSessionHas('contact_event', ['event' => 'lead_submit_error', 'reason' => 'delivery'])
+            ->assertSessionMissing('success');
+        Mail::assertNothingSent();
     }
 
     public function test_demo_noindex_does_not_remove_private_access_protection(): void

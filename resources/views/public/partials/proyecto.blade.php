@@ -2,7 +2,11 @@
     <a href="{{ $proyecto['url'] }}" target="_blank" rel="noopener noreferrer" class="project-card__preview" aria-label="Visitar {{ $proyecto['nombre'] }} (se abre en otra pestaña)">
         <div class="preview-frame preview-frame--{{ $proyecto['tipo'] === 'App móvil' ? 'phone' : 'browser' }}">
             <div class="preview-frame__img">
-                <img src="{{ asset('img/proyectos/' . $proyecto['imagen']) }}" alt="Captura de {{ $proyecto['nombre'] }}" loading="lazy">
+                @include('public.partials.imagen', [
+                    'archivo' => $proyecto['imagen'], 'alt' => 'Captura de ' . $proyecto['nombre'],
+                    'prioritaria' => false,
+                    'sizes' => $proyecto['tipo'] === 'App móvil' ? '128px' : '(min-width: 600px) 320px, calc(100vw - 90px)',
+                ])
             </div>
         </div>
     </a>
