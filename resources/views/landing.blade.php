@@ -7,6 +7,18 @@
         <meta name="description"
             content="DaloWeb — Agencia digital. Creamos webs profesionales, apps móviles, sistemas de reservas y software a medida para hacer crecer tu negocio.">
         <title>DaloWeb — Webs, Apps y Software a Medida</title>
+        <link rel="canonical" href="{{ rtrim(config('app.url'), '/') }}/">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="DaloWeb">
+        <meta property="og:title" content="DaloWeb — Webs, Apps y Software a Medida">
+        <meta property="og:description" content="Webs profesionales, apps móviles, reservas online y software a medida. Consulta nuestros proyectos y solicita tu presupuesto.">
+        <meta property="og:url" content="{{ rtrim(config('app.url'), '/') }}/">
+        <meta property="og:image" content="{{ rtrim(config('app.url'), '/') }}/img/proyectos/around-sevilla.png">
+        <meta property="og:image:alt" content="Proyecto de diseño web de DaloWeb para Around Sevilla Tours">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="DaloWeb — Webs, Apps y Software a Medida">
+        <meta name="twitter:description" content="Webs profesionales, apps móviles, reservas online y software a medida. Consulta nuestros proyectos y solicita tu presupuesto.">
+        <meta name="twitter:image" content="{{ rtrim(config('app.url'), '/') }}/img/proyectos/around-sevilla.png">
         <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
         <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
         <script src="{{ asset('js/landing/languages.js') }}" defer></script>
@@ -23,13 +35,10 @@
                 <nav class="nav" id="nav" aria-label="Navegación principal">
                     <div class="nav__drawer">
                         <ul class="nav__list">
-                            <li><a href="#inicio" class="nav__link" data-i18n="nav_home">Inicio</a></li>
                             <li><a href="#servicios" class="nav__link" data-i18n="nav_services">Servicios</a></li>
                             <li><a href="#proyectos" class="nav__link" data-i18n="nav_projects">Proyectos</a></li>
-                            <li><a href="#tecnologias" class="nav__link" data-i18n="nav_tech">Tecnologías</a></li>
-                            <li><a href="#nosotros" class="nav__link" data-i18n="nav_about">Sobre nosotros</a></li>
                             <li><a href="#precios" class="nav__link" data-i18n="nav_pricing">Precios</a></li>
-                            <li><a href="#contacto" class="nav__link" data-i18n="nav_contact">Contacto</a></li>
+                            <li><a href="#nosotros" class="nav__link" data-i18n="nav_about">Sobre nosotros</a></li>
                         </ul>
                         <a href="#contacto" class="btn btn--primary nav__cta-mobile" data-i18n="cta_button">Pide tu presupuesto</a>
                     </div>
@@ -38,23 +47,16 @@
                 <a href="#contacto" class="btn btn--primary header__cta" data-i18n="cta_button">Pide tu presupuesto</a>
 
                 <div class="lang-selector" id="lang-selector">
-                    <button class="lang-btn" id="lang-btn" aria-label="Seleccionar idioma">
+                    <button type="button" class="lang-btn" id="lang-btn" aria-label="Seleccionar idioma" aria-expanded="false" aria-controls="lang-dropdown">
                         <span class="lang-flag">🇪🇸</span>
                     </button>
                     <ul class="lang-dropdown" id="lang-dropdown">
-                        <li data-lang="es"><span class="lang-flag">🇪🇸</span></li>
-                        <li data-lang="en"><span class="lang-flag">EN</span></li>
+                        <li><button type="button" data-lang="es" lang="es"><span class="lang-flag">🇪🇸</span> Español</button></li>
+                        <li><button type="button" data-lang="en" lang="en"><span class="lang-flag">EN</span> English</button></li>
                     </ul>
                 </div>
 
-                <a href="{{ route('login') }}" class="theme-toggle" aria-label="Acceso administración" title="Acceso administración">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </a>
-
-                <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+                <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
                     <span></span><span></span><span></span>
                 </button>
             </div>
@@ -65,8 +67,7 @@
             <section class="hero" id="inicio">
                 <div class="container hero__inner">
                     <div class="hero__content">
-                        <h1 class="hero__title"><span data-i18n="hero_title_prefix">Creamos</span> <span class="typewriter" id="typewriter"></span> <span data-i18n="hero_title_suffix">que hacen
-                            <em>crecer tu negocio</em></span>
+                        <h1 class="hero__title"><span class="hero__title-highlight" data-i18n="hero_title_main">Webs profesionales</span> <span data-i18n="hero_title_suffix">y reservas online para tu negocio</span>
                         </h1>
                         <p class="hero__subtitle" data-i18n="hero_subtitle">Diseño web profesional, apps móviles para iOS y Android, sistemas de
                             reservas online y software a medida. </p>
@@ -217,8 +218,7 @@
                         <article class="process__step">
                             <div class="process__number">04</div>
                             <h3 class="process__title" data-i18n="process_step_4_title">Online y operativa</h3>
-                            <p class="process__text" data-i18n="process_step_4_text">Publicamos tu web con dominio, hosting y SSL configurados. En
-                                varios días tienes tu negocio visible en internet.</p>
+                            <p class="process__text" data-i18n="process_step_4_text">Publicamos tu web y configuramos dominio, hosting y SSL según el presupuesto acordado.</p>
                         </article>
                     </div>
 
@@ -229,8 +229,7 @@
                                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
                             </svg>
                         </span>
-                        <p data-i18n="process_highlight"><strong>De media, entregamos una web profesional en 3 días.</strong> Otras agencias necesitan
-                            entre 4 y 8 semanas para lo mismo.</p>
+                        <p data-i18n="process_highlight">Entrega orientativa del pack web: una semana desde la recepción de materiales y la aprobación del alcance. Confirmamos el calendario en tu presupuesto.</p>
                     </div>
                 </div>
             </section>
@@ -240,15 +239,15 @@
                 <div class="container">
                     <div class="stats__grid">
                         <div class="stat">
-                            <span class="stat__number" data-target="50">0</span>
+                            <span class="stat__number" data-target="50">+50</span>
                             <span class="stat__label" data-i18n="stat_1_label">Proyectos entregados</span>
                         </div>
                         <div class="stat">
-                            <span class="stat__number" data-target="4.8" data-decimal="true">0</span>
+                            <span class="stat__number" data-target="4.8" data-decimal="true">4.8 ★</span>
                             <span class="stat__label" data-i18n="stat_2_label">Valoración de nuestros clientes</span>
                         </div>
                         <div class="stat">
-                            <span class="stat__number" data-target="15">0</span>
+                            <span class="stat__number" data-target="15">+15</span>
                             <span class="stat__suffix" data-i18n="stat_3_suffix">años</span>
                             <span class="stat__label" data-i18n="stat_3_label">De experiencia en el sector</span>
                         </div>
@@ -506,12 +505,12 @@
                             </div>
                             <ul class="price-card__features">
                                 <li data-i18n="plan_1_f1">Diseño personalizado y responsive</li>
-                                <li data-i18n="plan_1_f2">Hasta 5 secciones / páginas</li>
+                                <li data-i18n="plan_1_f2">Hasta 3 páginas</li>
                                 <li data-i18n="plan_1_f3">Optimización SEO básica</li>
                                 <li data-i18n="plan_1_f5">Certificado SSL incluido</li>
-                                <li data-i18n="plan_1_f6">Entrega en una semana</li>
+                                <li data-i18n="plan_1_f6">Una semana desde materiales y alcance aprobados</li>
                             </ul>
-                            <a href="#contacto" class="btn btn--outline btn--full" data-i18n="price_cta">Solicitar presupuesto</a>
+                            <a href="#contacto" class="btn btn--outline btn--full" data-pack="web-profesional" data-tipo="web" data-i18n="price_cta">Solicitar presupuesto</a>
                         </article>
 
                         <article class="price-card">
@@ -532,7 +531,7 @@
                                 <li data-i18n="plan_2_f5">Recordatorios automáticos</li>
                                 <li data-i18n="plan_2_f6">Soporte 2 meses incluido</li>
                             </ul>
-                            <a href="#contacto" class="btn btn--outline btn--full" data-i18n="price_cta">Solicitar presupuesto</a>
+                            <a href="#contacto" class="btn btn--outline btn--full" data-pack="sistema-reservas" data-tipo="reservas" data-i18n="price_cta">Solicitar presupuesto</a>
                         </article>
 
                         <article class="price-card price-card--featured">
@@ -552,7 +551,7 @@
                                 <li data-i18n="plan_3_f3">Panel de administración</li>
                                 <li data-i18n="plan_3_f4">Soporte 3 meses incluido</li>
                             </ul>
-                            <a href="#contacto" class="btn btn--primary btn--full" data-i18n="price_cta">Solicitar presupuesto</a>
+                            <a href="#contacto" class="btn btn--primary btn--full" data-pack="app-movil" data-tipo="app" data-i18n="price_cta">Solicitar presupuesto</a>
                         </article>
                     </div>
 
@@ -615,27 +614,40 @@
 
                     <form class="contact-form" id="contactForm" action="{{ route('contacto') }}" method="POST">
                         @csrf
+                        @php
+                            $packAnterior = is_string(old('pack')) ? old('pack') : '';
+                            $packElegido = config('comercial.packs')[$packAnterior] ?? null;
+                        @endphp
+                        <input type="hidden" id="pack" name="pack" value="{{ $packElegido ? $packAnterior : '' }}">
+                        <div class="contact-form__group contact-form__group--full" id="selectedPack" @if(!$packElegido) hidden @endif>
+                            <p><span data-i18n="form_selected_pack">Pack elegido:</span> <strong id="selectedPackName">{{ $packElegido['nombre'] ?? '' }}</strong></p>
+                        </div>
+                        @error('pack') <p class="contact-form__error contact-form__group--full" role="alert">{{ $message }}</p> @enderror
                         <div class="contact-form__group">
                             <label for="nombre" data-i18n="form_name">Nombre</label>
-                            <input type="text" id="nombre" name="nombre" value="{{ old('nombre') }}" maxlength="100" placeholder="Tu nombre" data-i18n-placeholder="form_name_placeholder" required>
+                            <input type="text" id="nombre" name="nombre" autocomplete="name" value="{{ old('nombre') }}" maxlength="100" placeholder="Tu nombre" data-i18n-placeholder="form_name_placeholder" required @error('nombre') aria-invalid="true" aria-describedby="nombre-error" @enderror>
+                            @error('nombre') <p class="contact-form__error" id="nombre-error" role="alert">{{ $message }}</p> @enderror
                         </div>
                         <div class="contact-form__group">
                             <label for="email" data-i18n="form_email">Email</label>
-                            <input type="email" id="email" name="email" value="{{ old('email') }}" maxlength="150" placeholder="tu@email.com" data-i18n-placeholder="form_email_placeholder" required>
+                            <input type="email" id="email" name="email" autocomplete="email" value="{{ old('email') }}" maxlength="150" placeholder="tu@email.com" data-i18n-placeholder="form_email_placeholder" required @error('email') aria-invalid="true" aria-describedby="email-error" @enderror>
+                            @error('email') <p class="contact-form__error" id="email-error" role="alert">{{ $message }}</p> @enderror
                         </div>
                         <div class="contact-form__group">
                             <label for="tipo" data-i18n="form_type">Tipo de proyecto</label>
-                            <select id="tipo" name="tipo" required>
+                            <select id="tipo" name="tipo" required @error('tipo') aria-invalid="true" aria-describedby="tipo-error" @enderror>
                                 <option value="" disabled @selected(!old('tipo')) data-i18n="form_type_default">Selecciona una opción</option>
                                 <option value="web" @selected(old('tipo') === 'web') data-i18n="form_type_web">Página web</option>
                                 <option value="app" @selected(old('tipo') === 'app') data-i18n="form_type_app">App móvil</option>
                                 <option value="reservas" @selected(old('tipo') === 'reservas') data-i18n="form_type_reservas">Sistema de reservas</option>
                                 <option value="medida" @selected(old('tipo') === 'medida') data-i18n="form_type_medida">Aplicación a medida</option>
                             </select>
+                            @error('tipo') <p class="contact-form__error" id="tipo-error" role="alert">{{ $message }}</p> @enderror
                         </div>
                         <div class="contact-form__group contact-form__group--full">
                             <label for="mensaje" data-i18n="form_message">Mensaje</label>
-                            <textarea id="mensaje" name="mensaje" rows="5" maxlength="2000" placeholder="Cuéntanos qué necesitas…" data-i18n-placeholder="form_message_placeholder" required>{{ old('mensaje') }}</textarea>
+                            <textarea id="mensaje" name="mensaje" rows="5" maxlength="2000" placeholder="Cuéntanos qué necesitas…" data-i18n-placeholder="form_message_placeholder" required @error('mensaje') aria-invalid="true" aria-describedby="mensaje-error" @enderror>{{ old('mensaje') }}</textarea>
+                            @error('mensaje') <p class="contact-form__error" id="mensaje-error" role="alert">{{ $message }}</p> @enderror
                         </div>
                         <div class="contact-form__group contact-form__group--full">
                             <button type="submit" class="btn btn--primary btn--lg btn--full" data-i18n="form_submit">Enviar mensaje</button>
@@ -652,7 +664,7 @@
                     </form>
 
                     <div class="contact__info">
-                        <p><strong>Email:</strong> hola@daloweb.es</p>
+                        <p><strong>Email:</strong> <a href="mailto:hola@daloweb.es">hola@daloweb.es</a></p>
                     </div>
                 </div>
             </section>
@@ -675,6 +687,7 @@
                         <li><a href="#contacto" data-i18n="nav_contact">Contacto</a></li>
                         <li><a href="#" data-i18n="footer_legal">Aviso legal</a></li>
                         <li><a href="#" data-i18n="footer_privacy">Política de privacidad</a></li>
+                        <li><a href="{{ route('login') }}" data-i18n="footer_admin">Administración</a></li>
                     </ul>
                 </nav>
 
@@ -683,7 +696,7 @@
         </footer>
 
         <!-- CTA flotante -->
-        <div class="floating-cta" id="floatingCta">
+        <div class="floating-cta" id="floatingCta" inert aria-hidden="true">
             <div class="container floating-cta__inner">
                 <p class="floating-cta__text" data-i18n="floating_cta_text">¿Listo para impulsar tu negocio?</p>
                 <a href="#contacto" class="btn btn--primary btn--sm" data-i18n="cta_button">Pide tu presupuesto</a>

@@ -36,6 +36,12 @@
                                     <td style="padding:.5rem 0;color:#a0a0b8;font-size:.85rem;">Tipo</td>
                                     <td style="padding:.5rem 0;color:#e8e8f0;">{{ $tipo }}</td>
                                 </tr>
+                                @if($pack)
+                                    <tr>
+                                        <td style="padding:.5rem 0;color:#a0a0b8;font-size:.85rem;">Pack</td>
+                                        <td style="padding:.5rem 0;color:#e8e8f0;">{{ config('comercial.packs.' . $pack . '.nombre', $pack) }}</td>
+                                    </tr>
+                                @endif
                             </table>
 
                             <hr style="border:none;border-top:1px solid #2a2a40;margin:1.25rem 0;">

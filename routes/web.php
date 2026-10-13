@@ -13,6 +13,11 @@ use App\Http\Controllers\Admin\DemoController;
 
 // --- Landing ---
 Route::get('/', [InicioController::class, 'index'])->name('inicio');
+Route::get('/sitemap.xml', function () {
+    return response()->view('sitemap', [
+        'urls' => [rtrim(config('app.url'), '/') . '/'],
+    ])->header('Content-Type', 'application/xml; charset=UTF-8');
+})->name('sitemap');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->middleware('throttle:5,1')->name('contacto');
 
 // --- Auth ---

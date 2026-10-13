@@ -17,6 +17,7 @@ class CorreoContacto extends Mailable
         public readonly string $email,
         public readonly string $tipo,
         public readonly string $mensaje,
+        public readonly ?string $pack = null,
     ) {}
 
     public function envelope(): Envelope

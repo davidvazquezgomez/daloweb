@@ -205,7 +205,7 @@ button {
     transform: translateY(0);
 }
 
-.lang-dropdown li {
+.lang-dropdown [data-lang] {
     padding: 0.75rem 1rem;
     cursor: pointer;
     display: flex;
@@ -214,16 +214,18 @@ button {
     font-size: var(--fs-sm);
     font-weight: 500;
     transition: all var(--transition);
+    width: 100%;
+    text-align: left;
 }
 
-.lang-dropdown li:hover {
+.lang-dropdown [data-lang]:hover {
     background: var(--color-bg);
-    color: var(--color-primary);
+    color: #a68bfa;
 }
 
-.lang-dropdown li.is-selected {
-    color: var(--color-primary);
-    background: rgba(var(--color-primary-rgb), 0.1);
+.lang-dropdown [data-lang].is-selected {
+    color: #a68bfa;
+    background: var(--color-accent-light);
 }
 
 .lang-flag {
@@ -370,7 +372,11 @@ button {
 }
 
 /* Mobile nav */
-@media (max-width: 899px) {
+@media (max-width: 1099px) {
+
+    .lang-selector {
+        margin-left: auto;
+    }
 
     .header__cta {
         display: none;
@@ -378,6 +384,7 @@ button {
 
     .hamburger {
         display: flex;
+        margin-left: 1rem;
     }
 
     /*
@@ -480,7 +487,7 @@ button {
     display: flex;
     flex-direction: column;
     gap: 2.5rem;
-    padding: 2.5rem 0.75rem;
+    padding: 2.5rem 1.25rem;
 }
 
 .hero__title {
@@ -490,12 +497,8 @@ button {
     letter-spacing: -.02em;
 }
 
-.hero__title em {
-    font-style: normal;
-    background: linear-gradient(135deg, var(--color-accent), #a68bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+.hero__title-highlight {
+    color: #a68bfa;
 }
 
 .hero__subtitle {
@@ -1274,18 +1277,6 @@ button {
     }
 }
 
-@keyframes blink-cursor {
-
-    0%,
-    100% {
-        border-color: var(--color-accent);
-    }
-
-    50% {
-        border-color: transparent;
-    }
-}
-
 @keyframes marquee {
     0% {
         transform: translateX(0);
@@ -1304,18 +1295,6 @@ button {
     100% {
         transform: translateX(0);
     }
-}
-
-/* ======================================================
-   TYPEWRITER
-   ====================================================== */
-.typewriter {
-    display: inline-block;
-    min-width: 2px;
-    border-right: 3px solid var(--color-accent);
-    padding-right: 4px;
-    animation: blink-cursor .8s step-end infinite;
-    color: var(--color-accent);
 }
 
 /* ======================================================
@@ -1606,7 +1585,7 @@ button {
     background: var(--color-surface);
     border-top: 1px solid var(--color-border);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, .08);
-    padding: .75rem 0;
+    padding: .75rem 0 calc(.75rem + env(safe-area-inset-bottom, 0px));
     z-index: 998;
     transform: translateY(100%);
     transition: transform .4s ease;
@@ -1653,7 +1632,7 @@ button {
    ====================================================== */
 @media (min-width: 600px) {
     .hero__inner {
-        padding: 3rem 0;
+        padding: 3rem 1.25rem;
     }
 
     .hero__title {
@@ -1715,9 +1694,9 @@ button {
 }
 
 /* ======================================================
-   RESPONSIVE — DESKTOP (≥ 900px)
+   RESPONSIVE — DESKTOP (≥ 1100px)
    ====================================================== */
-@media (min-width: 900px) {
+@media (min-width: 1100px) {
     .section__title {
         font-size: var(--fs-3xl);
     }
@@ -1741,10 +1720,12 @@ button {
 
     .hero__content {
         flex: 1;
+        min-width: 0;
     }
 
     .hero__visual {
         flex: 1;
+        min-width: 0;
         min-height: 280px;
     }
 
@@ -1783,6 +1764,51 @@ button {
 
     .testimonials__grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 399px) {
+    .hero__buttons {
+        flex-direction: column;
+    }
+
+    .hero__buttons .btn {
+        width: 100%;
+    }
+}
+
+:focus-visible {
+    outline: 3px solid #a68bfa;
+    outline-offset: 4px;
+}
+
+.contact-form__error {
+    color: #ffb4b4;
+    font-size: var(--fs-sm);
+}
+
+.contact-form [aria-invalid="true"] {
+    border-color: #ffb4b4;
+}
+
+.contact-form button:disabled {
+    opacity: .65;
+    cursor: wait;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
     }
 }
 

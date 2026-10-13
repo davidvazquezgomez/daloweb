@@ -6,7 +6,7 @@
 window.translations = {
   es: {
     nav_home: 'Inicio', nav_services: 'Servicios', nav_projects: 'Proyectos', nav_tech: 'Tecnologías', nav_about: 'Sobre nosotros', nav_pricing: 'Precios', nav_contact: 'Contacto',
-    cta_button: 'Pide tu presupuesto', hero_title_prefix: 'Creamos', hero_title_suffix: 'que hacen crecer tu negocio', hero_subtitle: 'Diseño web profesional, apps móviles para iOS y Android, sistemas de reservas online y software a medida', hero_subtitle2: 'Todo lo que necesitas para digitalizarte.', hero_cta_primary: 'Quiero mi web', hero_cta_secondary: 'Ver proyectos',
+    cta_button: 'Pide tu presupuesto', hero_title_main: 'Webs profesionales', hero_title_suffix: 'y reservas online para tu negocio', hero_subtitle: 'Diseño web profesional, apps móviles para iOS y Android, sistemas de reservas online y software a medida', hero_subtitle2: 'Todo lo que necesitas para digitalizarte.', hero_cta_primary: 'Quiero mi web', hero_cta_secondary: 'Ver proyectos',
     services_title: 'Nuestros servicios', services_subtitle: 'Soluciones digitales completas para impulsar tu negocio al siguiente nivel.',
     service_1_title: 'Páginas web profesionales', service_1_text: 'Diseñamos y desarrollamos sitios web rápidos, modernos y optimizados para SEO que convierten visitantes en clientes.',
     service_2_title: 'Aplicaciones móviles', service_2_text: 'Apps nativas e híbridas para iOS y Android con interfaces intuitivas y rendimiento excepcional.',
@@ -16,8 +16,8 @@ window.translations = {
     process_step_1_title: 'Estudiamos tu negocio', process_step_1_text: 'Antes de la primera reunión ya hemos analizado tu sector, tu competencia y tus necesidades. Llegamos con los deberes hechos.',
     process_step_2_title: 'Diseño funcional listo', process_step_2_text: 'Te presentamos un diseño funcional basado en nuestro análisis. No es un boceto: es una web navegable que ya puedes probar.',
     process_step_3_title: 'Personalizamos juntos', process_step_3_text: 'Ajustamos colores, textos, imágenes y los pequeños detalles que hacen única tu marca. Tú decides, nosotros ejecutamos.',
-    process_step_4_title: 'Online y operativa', process_step_4_text: 'Publicamos tu web con dominio, hosting y SSL configurado. En una semana puedes tener tu web lista.',
-    process_highlight: 'Somos capaces de tenerte una web lista en 3 días si nos das libre elección de diseño, por supuesto, previo estudio de tu negocio',
+    process_step_4_title: 'Online y operativa', process_step_4_text: 'Publicamos tu web y configuramos dominio, hosting y SSL según el presupuesto acordado.',
+    process_highlight: 'Entrega orientativa del pack web: una semana desde la recepción de materiales y la aprobación del alcance. Confirmamos el calendario en tu presupuesto.',
     stat_1_label: 'Proyectos entregados', stat_2_label: 'Valoración de nuestros clientes', stat_3_suffix: 'años', stat_3_label: 'De experiencia en el sector',
     projects_title: 'Proyectos destacados', projects_subtitle: 'Algunos casos de éxito que hablan por nosotros.',
     project_badge_web: 'Web', project_badge_app: 'App móvil', project_badge_custom: 'Aplicación a Medida', visit_web: 'Visitar web \u2192', see_app: 'Ver app \u2192',
@@ -36,7 +36,7 @@ window.translations = {
     pricing_title: 'Nuestros precios', pricing_subtitle: 'Planes transparentes adaptados a cada tipo de proyecto. Sin letra pequeña.',
     pricing_highlight: '¿Tienes un proyecto con necesidades especiales? Cuéntanoslo y te haremos un presupuesto a medida sin compromiso.',
     plan_1_title: 'Web Profesional', price_from: 'Desde', price_cta: 'Solicitar presupuesto', most_requested: 'M\u00E1s solicitado',
-    plan_1_f1: 'Diseño personalizado y responsive', plan_1_f2: 'Hasta 3 secciones / páginas', plan_1_f3: 'Optimización SEO básica', plan_1_f5: 'Certificado SSL incluido', plan_1_f6: 'Entrega en una semana',
+    plan_1_f1: 'Diseño personalizado y responsive', plan_1_f2: 'Hasta 3 páginas', plan_1_f3: 'Optimización SEO básica', plan_1_f5: 'Certificado SSL incluido', plan_1_f6: 'Una semana desde materiales y alcance aprobados',
     plan_2_title: 'Sistema de Reservas', plan_2_f1: 'Calendario de reservas online', plan_2_f2: 'Confirmación por email automática', plan_2_f3: 'Panel de gestión de citas', plan_2_f4: 'Integrable en tu web actual', plan_2_f5: 'Recordatorios automáticos', plan_2_f6: 'Soporte 2 meses incluido',
     plan_3_title: 'App Móvil', plan_3_f1: 'iOS y Android (multiplataforma)', plan_3_f2: 'Diseño UI/UX personalizado', plan_3_f3: 'Panel de administración', plan_3_f4: 'Soporte 3 meses incluido',
     testimonials_title: 'Lo que dicen nuestros clientes',
@@ -44,16 +44,15 @@ window.translations = {
     testimonial_2_text: '"Necesitábamos una app que fuera sencilla para nuestros socios y DaloWeb lo clavó. El soporte post\u2011lanzamiento es inmejorable."', testimonial_2_author: 'Carlos Ruiz', testimonial_2_role: 'CEO, FitClub Cádiz',
     testimonial_3_text: '"El panel a medida que nos desarrollaron nos ahorra horas de trabajo cada semana. Mejor inversión imposible."', testimonial_3_author: 'Laura Méndez', testimonial_3_role: 'Operaciones, Logística Sur Express',
     contact_title: 'Cu\u00E9ntanos tu proyecto', contact_subtitle: 'Rellena el formulario y te responderemos en menos de 24 h.',
-    form_name: 'Nombre', form_name_placeholder: 'Tu nombre', form_email: 'Email', form_email_placeholder: 'tu@email.com', form_type: 'Tipo de proyecto', form_type_default: 'Selecciona una opción', form_type_web: 'Página web', form_type_app: 'App móvil', form_type_reservas: 'Sistema de reservas', form_type_medida: 'Aplicación a medida', form_message: 'Mensaje', form_message_placeholder: 'Cu\u00E9ntanos qu\u00E9 necesitas\u2026', form_submit: 'Enviar mensaje',
-    footer_legal: 'Aviso legal', footer_privacy: 'Política de privacidad', footer_copy: '© 2026 DaloWeb. Todos los derechos reservados.',
+    form_selected_pack: 'Pack elegido:', form_name: 'Nombre', form_name_placeholder: 'Tu nombre', form_email: 'Email', form_email_placeholder: 'tu@email.com', form_type: 'Tipo de proyecto', form_type_default: 'Selecciona una opción', form_type_web: 'Página web', form_type_app: 'App móvil', form_type_reservas: 'Sistema de reservas', form_type_medida: 'Aplicación a medida', form_message: 'Mensaje', form_message_placeholder: 'Cu\u00E9ntanos qu\u00E9 necesitas\u2026', form_submit: 'Enviar mensaje',
+    footer_admin: 'Administración', footer_legal: 'Aviso legal', footer_privacy: 'Política de privacidad', footer_copy: '© 2026 DaloWeb. Todos los derechos reservados.',
     floating_cta_text: '¿Listo para impulsar tu negocio?',
     badge_new: 'Nuevo',
     form_error: 'Por favor, rellena todos los campos correctamente.', form_success: '¡Mensaje enviado! Te contactaremos pronto.',
-    typewriter_words: ['webs profesionales', 'apps m\u00F3viles', 'sistemas de reservas', 'software a medida']
   },
   en: {
     nav_home: 'Home', nav_services: 'Services', nav_projects: 'Projects', nav_tech: 'Stack', nav_about: 'About Us', nav_pricing: 'Pricing', nav_contact: 'Contact',
-    cta_button: 'Get a quote', hero_title_prefix: 'We create', hero_title_suffix: 'that make your business grow', hero_subtitle: 'Professional web design, mobile apps for iOS and Android, online booking systems, and custom software.', hero_subtitle2: 'Everything you need to go digital.', hero_cta_primary: 'I want my web', hero_cta_secondary: 'See projects',
+    cta_button: 'Get a quote', hero_title_main: 'Professional websites', hero_title_suffix: 'and online booking for your business', hero_subtitle: 'Professional web design, mobile apps for iOS and Android, online booking systems, and custom software.', hero_subtitle2: 'Everything you need to go digital.', hero_cta_primary: 'I want my web', hero_cta_secondary: 'See projects',
     services_title: 'Our Services', services_subtitle: 'Complete digital solutions to take your business to the next level.',
     service_1_title: 'Professional Websites', service_1_text: 'We design and develop fast, modern, and SEO-optimized websites that convert visitors into customers.',
     service_2_title: 'Mobile Applications', service_2_text: 'Native and hybrid apps for iOS and Android with intuitive interfaces and exceptional performance.',
@@ -63,8 +62,8 @@ window.translations = {
     process_step_1_title: 'We study your business', process_step_1_text: 'Before the first meeting, we have already analyzed your sector, competition, and needs. We come prepared.',
     process_step_2_title: 'Functional design ready', process_step_2_text: 'We present a functional design based on our analysis. It\'s not a sketch: it\'s a navigable web you can already test.',
     process_step_3_title: 'Customizing together', process_step_3_text: 'We adjust colors, texts, images, and the small details that make your brand unique. You decide, we execute.',
-    process_step_4_title: 'Online and operational', process_step_4_text: 'We publish your web with domain, hosting, and SSL configured. In one week you can have your web ready.',
-    process_highlight: 'We are able to have a website ready for you in 3 days if you give us free choice of design, of course, after a study of your business',
+    process_step_4_title: 'Online and operational', process_step_4_text: 'We publish your website and configure the domain, hosting and SSL as agreed in your quote.',
+    process_highlight: 'Estimated delivery for the website pack: one week after receiving your materials and approving the scope. We confirm the schedule in your quote.',
     stat_1_label: 'Delivered projects', stat_2_label: 'Customer rating', stat_3_suffix: 'years', stat_3_label: 'Of experience in the sector',
     projects_title: 'Featured Projects', projects_subtitle: 'Success stories that speak for us.',
     project_badge_web: 'Web', project_badge_app: 'Mobile App', project_badge_custom: 'Custom App', visit_web: 'Visit website \u2192', see_app: 'See app \u2192',
@@ -83,7 +82,7 @@ window.translations = {
     pricing_title: 'Our Prices', pricing_subtitle: 'Transparent plans adapted to every type of project. No fine print.',
     pricing_highlight: 'Do you have a project with special needs? Tell us about it and we will give you a custom quote without obligation.',
     plan_1_title: 'Professional Web', price_from: 'From', price_cta: 'Request a quote', most_requested: 'Most requested',
-    plan_1_f1: 'Custom and responsive design', plan_1_f2: 'Up to 3 sections / pages', plan_1_f3: 'Basic SEO optimization', plan_1_f4: 'Contact form', plan_1_f5: 'SSL certificate included', plan_1_f6: 'Delivery in one week',
+    plan_1_f1: 'Custom and responsive design', plan_1_f2: 'Up to 3 pages', plan_1_f3: 'Basic SEO optimization', plan_1_f4: 'Contact form', plan_1_f5: 'SSL certificate included', plan_1_f6: 'One week after materials and scope approval',
     plan_2_title: 'Booking System', plan_2_f1: 'Online booking calendar', plan_2_f2: 'Automatic email confirmation', plan_2_f3: 'Appointment management panel', plan_2_f4: 'Integrable into your current web', plan_2_f5: 'Automatic reminders', plan_2_f6: '2 months support included',
     plan_3_title: 'Mobile App', plan_3_f1: 'iOS and Android (cross-platform)', plan_3_f2: 'Design UI/UX design', plan_3_f3: 'Administration panel', plan_3_f4: '3 months support included',
     testimonials_title: 'What our clients say',
@@ -91,22 +90,27 @@ window.translations = {
     testimonial_2_text: '"We needed an app that was simple for our members and DaloWeb nailed it. The post-launch support is unbeatable."', testimonial_2_author: 'Carlos Ruiz', testimonial_2_role: 'CEO, FitClub Cádiz',
     testimonial_3_text: '"The custom panel they developed for us saves us hours of work every week. Best investment ever."', testimonial_3_author: 'Laura Méndez', testimonial_3_role: 'Operations, Logística Sur Express',
     contact_title: 'Tell us about your project', contact_subtitle: 'Fill out the form and we will respond in less than 24 h.',
-    form_name: 'Name', form_name_placeholder: 'Your name', form_email: 'Email', form_email_placeholder: 'you@email.com', form_type: 'Project type', form_type_default: 'Select an option', form_type_web: 'Website', form_type_app: 'Mobile App', form_type_reservas: 'Booking system', form_type_medida: 'Custom application', form_message: 'Message', form_message_placeholder: 'Tell us what you need\u2026', form_submit: 'Send message',
-    footer_legal: 'Legal notice', footer_privacy: 'Privacy policy', footer_copy: '© 2026 DaloWeb. All rights reserved.',
+    form_selected_pack: 'Selected pack:', form_name: 'Name', form_name_placeholder: 'Your name', form_email: 'Email', form_email_placeholder: 'you@email.com', form_type: 'Project type', form_type_default: 'Select an option', form_type_web: 'Website', form_type_app: 'Mobile App', form_type_reservas: 'Booking system', form_type_medida: 'Custom application', form_message: 'Message', form_message_placeholder: 'Tell us what you need\u2026', form_submit: 'Send message',
+    footer_admin: 'Administration', footer_legal: 'Legal notice', footer_privacy: 'Privacy policy', footer_copy: '© 2026 DaloWeb. All rights reserved.',
     floating_cta_text: 'Ready to boost your business?',
     badge_new: 'New',
     form_error: 'Please fill in all fields correctly.', form_success: 'Message sent! We will contact you soon.',
-    typewriter_words: ['professional websites', 'mobile apps', 'booking systems', 'custom software']
   },
 };
 
-window.currentLang = localStorage.getItem('lang') || 'es';
+window.currentLang = 'es';
+try {
+  var savedLang = localStorage.getItem('lang');
+  if (window.translations[savedLang]) window.currentLang = savedLang;
+} catch (e) {
+  // El idioma sigue funcionando aunque el almacenamiento esté deshabilitado.
+}
 
 // 2. Translation logic
 window.updateLanguage = function(lang) {
   if (!window.translations[lang]) lang = 'es';
   window.currentLang = lang;
-  localStorage.setItem('lang', lang);
+  try { localStorage.setItem('lang', lang); } catch (e) {}
   document.documentElement.lang = lang;
 
   // Update selector UI
@@ -120,11 +124,13 @@ window.updateLanguage = function(lang) {
       if (flagEl && btnFlagEl) {
         btnFlagEl.textContent = flagEl.textContent;
       }
-      var options = langDropdown.querySelectorAll('li');
+      var options = langDropdown.querySelectorAll('[data-lang]');
       for (var i = 0; i < options.length; i++) {
         options[i].classList.remove('is-selected');
+        options[i].setAttribute('aria-pressed', 'false');
       }
       selectedOption.classList.add('is-selected');
+      selectedOption.setAttribute('aria-pressed', 'true');
     }
   }
 
@@ -163,21 +169,37 @@ window.updateLanguage = function(lang) {
     var langBtn = document.getElementById('lang-btn');
     var langDropdown = document.getElementById('lang-dropdown');
     if (langBtn && langDropdown) {
+      function closeLanguageSelector(restoreFocus) {
+        langDropdown.classList.remove('active');
+        langBtn.setAttribute('aria-expanded', 'false');
+        if (restoreFocus) langBtn.focus();
+      }
       langBtn.addEventListener('click', function(e) {
         e.stopPropagation();
-        langDropdown.classList.toggle('active');
+        var isOpen = langDropdown.classList.toggle('active');
+        langBtn.setAttribute('aria-expanded', String(isOpen));
+        if (isOpen) langDropdown.querySelector('[data-lang]').focus();
       });
-      var options = langDropdown.querySelectorAll('li');
+      var options = langDropdown.querySelectorAll('[data-lang]');
       for (var i = 0; i < options.length; i++) {
         (function(opt) {
           opt.addEventListener('click', function() {
             window.updateLanguage(opt.getAttribute('data-lang'));
-            langDropdown.classList.remove('active');
+            closeLanguageSelector(true);
           });
         })(options[i]);
       }
-      document.addEventListener('click', function() {
-        langDropdown.classList.remove('active');
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('#lang-selector')) closeLanguageSelector(false);
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && langDropdown.classList.contains('active')) {
+          e.preventDefault();
+          closeLanguageSelector(true);
+        }
+      });
+      document.getElementById('lang-selector').addEventListener('focusout', function(e) {
+        if (!this.contains(e.relatedTarget)) closeLanguageSelector(false);
       });
     }
     // Perform initial translation once DOM is ready

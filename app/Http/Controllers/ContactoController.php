@@ -6,16 +6,19 @@ use App\Mail\CorreoContacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class ContactoController extends Controller
 {
     public function enviar(Request $request)
     {
+        $packs = array_filter(config('comercial.packs'), fn ($pack) => $pack['tipo'] === $request->input('tipo'));
         $validated = $request->validate([
             'nombre'  => 'required|string|max:100',
             'email'   => 'required|email|max:150',
             'tipo'    => 'required|in:web,app,reservas,medida',
             'mensaje' => 'required|string|max:2000',
+            'pack' => ['nullable', 'string', Rule::in(array_keys($packs))],
         ]);
 
         try {
@@ -28,6 +31,7 @@ class ContactoController extends Controller
                 email: $validated['email'],
                 tipo: $validated['tipo'],
                 mensaje: $validated['mensaje'],
+                pack: $validated['pack'] ?? null,
             ));
 
             return redirect()->to(route('inicio') . '#contacto')->with('success', 'Mensaje enviado correctamente.');

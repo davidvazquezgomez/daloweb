@@ -27,6 +27,9 @@ class AccesoDemo
 
         $request->attributes->set('demo', $demo);
 
-        return $next($request);
+        $response = $next($request);
+        $response->headers->set('X-Robots-Tag', 'noindex');
+
+        return $response;
     }
 }

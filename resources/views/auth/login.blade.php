@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
     <title>Login — DaloWeb</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('img/favicon/favicon.svg') }}">
     <style>
