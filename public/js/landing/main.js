@@ -13,8 +13,6 @@
   var navLinks = document.querySelectorAll(".nav__link");
   var contactForm = document.getElementById("contactForm");
   var formFeedback = document.getElementById("formFeedback");
-  var floatingCta = document.getElementById("floatingCta");
-  var contactSection = document.getElementById("contacto");
   var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   var desktopMenu = window.matchMedia('(min-width: 1100px)');
   var isolatedElements = [];
@@ -35,7 +33,6 @@
     isolatedElements = [];
     if (wasOpen) document.body.style.overflow = previousOverflow;
     if (wasOpen && restoreFocus !== false && hamburger) hamburger.focus();
-    updateFloatingCta();
   }
 
   if (hamburger && nav) {
@@ -49,14 +46,13 @@
       hamburger.classList.add('is-active');
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
-      var backgrounds = document.querySelectorAll('main, .footer, .floating-cta, .header__inner > :not(.nav):not(.hamburger)');
+      var backgrounds = document.querySelectorAll('main, .footer, .header__inner > :not(.nav):not(.hamburger)');
       isolatedElements = Array.prototype.map.call(backgrounds, function (element) {
         var item = { element: element, inert: element.inert };
         element.inert = true;
         return item;
       });
       nav.querySelector('a').focus();
-      updateFloatingCta();
     });
 
     nav.addEventListener("click", function (e) {
@@ -92,34 +88,6 @@
     });
   }
 
-  function updateFloatingCta() {
-    if (!floatingCta || !contactSection) return;
-    var viewport = window.visualViewport;
-    var viewportTop = viewport ? viewport.offsetTop : 0;
-    var viewportBottom = viewportTop + (viewport ? viewport.height : window.innerHeight);
-    var inputFocused = document.activeElement && document.activeElement.matches('input, select, textarea');
-    var menuOpen = nav && nav.classList.contains('is-open');
-    var formRect = contactSection.getBoundingClientRect();
-    var contactVisible = formRect.top < viewportBottom && formRect.bottom > viewportTop;
-    var ctaVisible = Array.prototype.some.call(document.querySelectorAll('main a[href="#contacto"], .header__cta'), function (cta) {
-      var rect = cta.getBoundingClientRect();
-      return rect.width > 0 && rect.height > 0 && rect.top < viewportBottom && rect.bottom > viewportTop;
-    });
-    var visible = window.scrollY > 600 && !inputFocused && !menuOpen && !contactVisible && !ctaVisible;
-    floatingCta.classList.toggle('is-visible', visible);
-    floatingCta.inert = !visible;
-    floatingCta.setAttribute('aria-hidden', String(!visible));
-  }
-  window.addEventListener('resize', updateFloatingCta);
-  document.addEventListener('focusin', updateFloatingCta);
-  document.addEventListener('focusout', function () { requestAnimationFrame(updateFloatingCta); });
-  window.addEventListener('languageChanged', updateFloatingCta);
-  if (window.visualViewport) {
-    window.visualViewport.addEventListener('resize', updateFloatingCta);
-    window.visualViewport.addEventListener('scroll', updateFloatingCta);
-  }
-  updateFloatingCta();
-
   /* ==========================================================
      2. Shrink header on scroll
      ========================================================== */
@@ -134,7 +102,6 @@
           header.style.boxShadow = "";
         }
       }
-      updateFloatingCta();
     },
     { passive: true }
   );
@@ -165,7 +132,7 @@
      4. Scroll reveal
      ========================================================== */
   if (window.IntersectionObserver && !reducedMotion.matches) {
-    var revealSelectors = [".card", ".process__step", ".project-card", ".price-card", ".why-card", ".testimonial", ".contact-form", ".contact__info", ".hero__content", ".hero__visual", ".stat"];
+    var revealSelectors = [".card", ".process__step", ".project-card", ".price-card", ".why-card", ".contact-form", ".hero__content", ".hero__visual"];
     
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -254,49 +221,9 @@
       if (target) {
         e.preventDefault();
         target.scrollIntoView({ behavior: reducedMotion.matches ? "auto" : "smooth" });
+        if (this.classList.contains('skip-link')) target.focus({ preventScroll: true });
       }
     });
-  }
-
-  /* ==========================================================
-     7. Animated counters
-     ========================================================== */
-  if (window.IntersectionObserver && !reducedMotion.matches) {
-    var counters = document.querySelectorAll(".stat__number");
-    var counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var el = entry.target;
-          var target = parseFloat(el.getAttribute("data-target"));
-          var isDecimal = el.hasAttribute("data-decimal");
-          var duration = 2000;
-          var startTime = null;
-          
-          function animate(currentTime) {
-            if (!startTime) startTime = currentTime;
-            var progress = Math.min((currentTime - startTime) / duration, 1);
-            var eased = 1 - Math.pow(1 - progress, 3);
-            var current = target * eased;
-            if (isDecimal) { 
-              el.textContent = current.toFixed(1); 
-            } else { 
-              el.textContent = "+" + Math.floor(current); 
-            }
-            if (progress < 1 && !reducedMotion.matches) {
-              requestAnimationFrame(animate); 
-            } else { 
-              el.textContent = isDecimal ? target.toFixed(1) + " \u2605" : "+" + target; 
-            }
-          }
-          requestAnimationFrame(animate);
-          counterObserver.unobserve(el);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    for (var o = 0; o < counters.length; o++) {
-      counterObserver.observe(counters[o]);
-    }
   }
 
   window.addEventListener('pageshow', function () {
@@ -304,6 +231,5 @@
       contactForm.dataset.submitting = 'false';
       contactForm.querySelector('button[type="submit"]').disabled = false;
     }
-    updateFloatingCta();
   });
 })();

@@ -13,11 +13,12 @@ use App\Http\Controllers\Admin\DemoController;
 
 // --- Landing ---
 Route::get('/', [InicioController::class, 'index'])->name('inicio');
-Route::get('/sitemap.xml', function () {
-    return response()->view('sitemap', [
-        'urls' => [rtrim(config('app.url'), '/') . '/'],
-    ])->header('Content-Type', 'application/xml; charset=UTF-8');
-})->name('sitemap');
+Route::get('/sitemap.xml', [InicioController::class, 'sitemap'])->name('sitemap');
+foreach (array_keys(config('servicios')) as $slug) {
+    Route::get('/' . $slug, [InicioController::class, 'servicio'])->defaults('slug', $slug)->name('servicio.' . $slug);
+}
+Route::get('/precios', [InicioController::class, 'precios'])->name('precios');
+Route::get('/proyectos', [InicioController::class, 'proyectos'])->name('proyectos');
 Route::post('/contacto', [ContactoController::class, 'enviar'])->middleware('throttle:5,1')->name('contacto');
 
 // --- Auth ---

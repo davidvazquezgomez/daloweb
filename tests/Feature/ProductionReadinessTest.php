@@ -114,10 +114,53 @@ class ProductionReadinessTest extends TestCase
             ->assertHeader('Content-Type', 'application/xml; charset=UTF-8');
         $xml = simplexml_load_string($response->getContent());
         $this->assertNotFalse($xml);
-        $this->assertCount(1, $xml->url);
+        $this->assertCount(7, $xml->url);
         $this->assertSame('https://www.daloweb.es/', (string) $xml->url[0]->loc);
+        foreach ($xml->url as $url) {
+            $path = parse_url((string) $url->loc, PHP_URL_PATH);
+            $this->get($path)->assertOk()->assertSee('rel="canonical" href="' . (string) $url->loc . '"', false);
+        }
         $this->get('/')->assertSee('rel="canonical" href="https://www.daloweb.es/"', false);
         $this->get('/login')->assertSee('name="robots" content="noindex"', false);
+    }
+
+    public function test_service_pages_have_distinct_metadata_and_matching_breadcrumbs(): void
+    {
+        config(['app.url' => 'https://www.daloweb.es']);
+        $titles = [];
+        foreach (config('servicios') as $slug => $servicio) {
+            $response = $this->get('/' . $slug)->assertOk()
+                ->assertSee($servicio['h1'])->assertSee('type="application/ld+json"', false);
+            $content = $response->getContent();
+            preg_match('/<title>(.*?)<\/title>/s', $content, $title);
+            $titles[] = $title[1];
+            preg_match('/<script type="application\/ld\+json">(.*?)<\/script>/s', $content, $json);
+            $schema = json_decode($json[1], true, 512, JSON_THROW_ON_ERROR);
+            $this->assertSame('Organization', $schema['@graph'][0]['@type']);
+            $crumbs = $schema['@graph'][1]['itemListElement'];
+            $this->assertSame($servicio['nombre'], $crumbs[1]['name']);
+            $this->assertSame('https://www.daloweb.es/' . $slug, $crumbs[1]['item']);
+            $this->assertStringNotContainsString('languages.js', $content);
+        }
+        $this->assertCount(4, array_unique($titles));
+    }
+
+    public function test_external_service_pack_link_preselects_contact_without_javascript(): void
+    {
+        $this->get('/?pack=sistema-reservas')->assertOk()
+            ->assertSee('value="sistema-reservas"', false)
+            ->assertSee('value="reservas" selected', false);
+        $this->get('/?tipo=medida')->assertOk()->assertSee('value="medida" selected', false);
+        foreach (['/?pack=inventado', '/?pack[]=web-profesional', '/?tipo[]=web'] as $path) {
+            $this->get($path)->assertOk();
+        }
+    }
+
+    public function test_public_portfolio_and_price_page_preserve_existing_offer(): void
+    {
+        $this->get('/proyectos')->assertOk()->assertSee('Budgetix')->assertSee('Fuerza Neta');
+        $this->get('/precios')->assertOk()->assertSee('200 €')->assertSee('600 €')->assertSee('800 €')
+            ->assertSee('Impuestos')->assertSee('mantenimiento continuado');
     }
 
     public function test_demo_noindex_does_not_remove_private_access_protection(): void

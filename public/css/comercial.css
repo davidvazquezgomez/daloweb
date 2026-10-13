@@ -1,0 +1,86 @@
+/* Páginas comerciales y portada compacta. */
+.skip-link { position: fixed; top: -100px; left: 20px; z-index: 1100; background: #fff; color: #0f0f1a; padding: .75rem 1rem; }
+.skip-link:focus { top: 12px; }
+.pagina-inicio .hero { min-height: 0; }
+.pagina-inicio .wave-separator { margin-top: -30px; }
+.pagina-interior .hamburger { margin-left: auto; }
+.pagina-inicio .hero__inner { padding-top: 3.5rem; padding-bottom: 4rem; }
+.pagina-inicio .section { padding: 3.25rem 0; }
+.hero__visual { min-height: 0; align-items: center; }
+.hero-project { width: 100%; max-width: 520px; margin: 0; border: 1px solid var(--color-border); border-radius: var(--radius); overflow: hidden; background: var(--color-surface); }
+.hero-project img { width: 100%; height: auto; aspect-ratio: 703 / 360; object-fit: cover; }
+.hero-project figcaption { padding: .9rem 1rem; font-size: var(--fs-sm); color: var(--color-text-soft); }
+.hero-project figcaption strong { display: block; color: var(--color-text); }
+.section-action { display: inline-flex; margin-top: 1.5rem; }
+.service-link { display: inline-block; margin-top: 1rem; color: #a68bfa; font-weight: 600; }
+.pack-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin-bottom: 1rem; }
+.pack-overview a { display: flex; flex-direction: column; gap: .35rem; padding: 1rem; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-bg); }
+.pack-overview strong { font-size: 1.5rem; }
+.pack-overview strong small { font-size: .8rem; font-weight: 400; }
+.pack-overview span { font-size: var(--fs-sm); }
+.pack-overview span:last-child { color: var(--color-text-soft); }
+.small-print { font-size: var(--fs-sm); color: var(--color-text-soft); line-height: 1.65; margin: 1rem 0 1.5rem; }
+.pricing__grid--web { grid-template-columns: 1fr; }
+.pricing__grid--web .price-card { padding: 1.5rem; }
+.pricing__grid--web .price-card__header { text-align: left; margin-bottom: 1.25rem; }
+.pricing__grid--web .price-card__header > p { color: var(--color-text-soft); font-size: var(--fs-sm); margin-bottom: .75rem; }
+.pricing__grid--web .price-card__price strong { display: inline; font-size: 2rem; margin-left: .4rem; }
+.pricing__grid--web .price-card__features { margin-bottom: 1.25rem; }
+.text-link { display: inline-block; margin-top: 1rem; color: #a68bfa; font-size: var(--fs-sm); }
+.custom-offers { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.custom-project { padding: 1.5rem; background: var(--color-bg); border: 1px solid var(--color-border); border-radius: var(--radius); }
+.custom-project p { color: var(--color-text-soft); margin: .75rem 0; font-size: var(--fs-sm); }
+.custom-project .btn { align-self: flex-start; margin-top: .5rem; }
+.custom-project .text-link { display: block; }
+.faq details { border-bottom: 1px solid var(--color-border); padding: 1.1rem 0; }
+.faq summary { cursor: pointer; font-weight: 600; line-height: 1.6; }
+.faq details p { margin-top: .75rem; color: var(--color-text-soft); }
+.narrow { max-width: 840px; }
+.contact-layout { display: grid; gap: 2rem; }
+.contact-intro p { color: var(--color-text-soft); margin-bottom: 1rem; }
+.contact-intro h3 { margin-bottom: .75rem; }
+.contact-intro a { color: #a68bfa; }
+.contact-form { width: 100%; max-width: none; }
+.contact-form__group--full, .contact-form__feedback { grid-column: 1 / -1; }
+.contact-form [hidden] { display: none; }
+.breadcrumbs { padding-top: calc(var(--header-h) + 1.5rem); display: flex; flex-wrap: wrap; gap: .75rem; color: var(--color-text-soft); font-size: var(--fs-sm); }
+.breadcrumbs a { color: #a68bfa; }
+.pagina-interior h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.18; max-width: 900px; }
+.lead { font-size: var(--fs-md); color: var(--color-text-soft); max-width: 780px; margin: 1.25rem 0 2rem; }
+.service-hero { padding-top: 2.5rem; }
+.service-hero__grid, .service-body__grid { display: grid; gap: 2rem; }
+.eyebrow { color: #a68bfa; font-weight: 600; margin-bottom: .75rem; }
+.service-summary { padding: 1.5rem; border: 1px solid var(--color-border); border-radius: var(--radius); background: var(--color-surface); }
+.service-summary h2 { font-size: 1.3rem; margin-bottom: .75rem; }
+.service-summary p { color: var(--color-text-soft); }
+.service-summary__price { margin-top: 1.5rem; }
+.service-summary__price strong { color: var(--color-text); font-size: 1.5rem; }
+.service-summary a { color: #a68bfa; }
+.service-body { background: var(--color-surface); }
+.service-body h2 { margin: 0 0 1rem; }
+.service-body p { color: var(--color-text-soft); margin-bottom: 2rem; }
+.scope-list { list-style: disc; padding-left: 1.4rem; margin-bottom: 2rem; color: var(--color-text-soft); }
+.scope-list li + li { margin-top: .65rem; }
+.related-services__links { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; }
+.related-services__links a { color: #a68bfa; border: 1px solid var(--color-border); padding: .75rem 1rem; border-radius: var(--radius-sm); }
+.pagina-interior .projects__grid { margin-top: 2rem; }
+.pagina-interior .hero__visual { display: none; }
+.pagina-inicio .process__timeline { grid-template-columns: 1fr; }
+@media (min-width: 600px) {
+    .pricing__grid--web, .custom-offers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .pagina-inicio .process__timeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 900px) {
+    .service-hero__grid { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); align-items: start; }
+    .service-body__grid { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); }
+    .contact-layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.8fr); }
+}
+@media (max-width: 599px) {
+    .pagina-inicio .hero__inner { padding-top: 2rem; padding-bottom: 2rem; gap: 1.5rem; }
+    .pagina-inicio .section { padding: 2.5rem 0; }
+    .pagina-inicio .hero__title { font-size: 1.9rem; }
+    .pagina-inicio .hero__buttons { margin-top: 1.25rem; }
+    .hero-project figcaption { padding: .65rem .9rem; }
+    .pack-overview a { padding: .85rem; }
+    .pack-overview span:first-child { min-height: 2.8em; }
+}

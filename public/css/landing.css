@@ -1575,45 +1575,6 @@ button {
 }
 
 /* ======================================================
-   FLOATING CTA BAR
-   ====================================================== */
-.floating-cta {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: var(--color-surface);
-    border-top: 1px solid var(--color-border);
-    box-shadow: 0 -4px 20px rgba(0, 0, 0, .08);
-    padding: .75rem 0 calc(.75rem + env(safe-area-inset-bottom, 0px));
-    z-index: 998;
-    transform: translateY(100%);
-    transition: transform .4s ease;
-}
-
-.floating-cta.is-visible {
-    transform: translateY(0);
-}
-
-.floating-cta__inner {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.floating-cta__text {
-    font-weight: 600;
-    font-size: var(--fs-sm);
-    display: none;
-}
-
-.btn--sm {
-    padding: .5rem 1.25rem;
-    font-size: var(--fs-sm);
-}
-
-/* ======================================================
    SCROLL REVEAL HELPER
    ====================================================== */
 .reveal {
@@ -1688,9 +1649,6 @@ button {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .floating-cta__text {
-        display: block;
-    }
 }
 
 /* ======================================================
