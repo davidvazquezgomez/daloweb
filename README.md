@@ -6,7 +6,7 @@ Plataforma web de **DaloWeb**, agencia digital especializada en diseño web prof
 
 | Capa | Tecnología |
 |------|------------|
-| Backend | Laravel 12 · PHP 8.3 |
+| Backend | Laravel 12 · PHP 8.5 (`~8.5.0` en Composer) |
 | Base de datos | MariaDB |
 | Frontend | HTML5 · CSS3 · JavaScript vanilla (sin Node.js) |
 | Auth | Laravel Sanctum · Sesiones en archivos (BD configurable) |
@@ -201,7 +201,7 @@ Todos los derechos reservados © DaloWeb 2026.
 ## Historial de cambios
 
 ### Panel Admin (Marzo 2026)
-- Migración a Laravel 12 con PHP 8.3
+- Migración a Laravel 12; runtime actual actualizado a PHP 8.5
 - Sistema de autenticación completo (login, middleware, sesiones en BD)
 - Módulo Tareas: Kanban con drag & drop, comentarios, asignación
 - Módulo Usuarios: CRUD, búsqueda, perfiles con secciones condicionales
